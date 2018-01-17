@@ -1,3 +1,18 @@
+/* Classes for easyautocomplete */
+.eac-square input {
+    background: url("../images/icon_search.png") no-repeat right 10px center;
+}
+
+.fix-autocomplete {
+    padding : 0 !important;
+    border-width : 0;
+}
+
+.input-grp-autocomplete
+{
+    padding-bottom: 2px !important;
+}
+
 footer {
     position: fixed;
     bottom: 0;

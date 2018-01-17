@@ -1,145 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Hodl my beer</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-            crossorigin="anonymous">
-            <link rel="stylesheet" href="assets/css/style.css">
-            <link rel="stylesheet" href="assets/css/easy-autocomplete.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hodl my beer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/easy-autocomplete.css">
+</head>
 
-    <body>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-md bg-primary navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <b>Hodl My Beer</b>
-                </a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse text-center justify-content-end">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Name</a>
-                        </li>
-                    </ul>
-                    <a class="btn navbar-btn ml-2 text-white btn-secondary">
-                        <i class="fa d-inline fa-lg fa-user-circle-o"></i> Sign in</a>
-                </div>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md bg-primary navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <h2>Hodl My Beer</h2>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Name</a>
+                    </li>
+                </ul>
+                <a class="btn navbar-btn ml-2 text-white btn-secondary">
+                    <i class="fa d-inline fa-lg fa-user-circle-o"></i> Sign in</a>
             </div>
-        </nav>
-        <!-- Cover -->
-        <!-- Article style section -->
-        <div class="py-5 text-center opaque-overlay">
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-md-12 text-white">
-                        <h1 class="display-3 mb-4 text-primary">Search Currency</h1>
-                        <div id="search-currency" class="">
-                            <input class="typeahead" type="text" placeholder="Currency Name">
-                            <a href="#" class="btn btn-sm btn-primary">Search</a>
+        </div>
+    </nav>
+    <!-- Cover -->
+    <!-- Article style section -->
+    <div class="py-5 text-center opaque-overlay">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 text-white">
+                    <h1 class="display-4 mb-4 text-primary">Search Currency</h1>
+                    <div class="input-group mb-3">
+                        <input type="text" class="typeahead form-control" placeholder="Currency Name"
+                               aria-label="Currency Name" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">Search</button>
                         </div>
                     </div>
                 </div>
-                <div class="row daily mt-5">
-                    <div class="col-sm-2 border">
-                        Daily
-                    </div>
-                    <div class="col-sm-2 border daily_percentage">
-                        Daily %
-                    </div>
-                    <div class="col-sm-2 border daily_graph">
-                        Graph
-                    </div>
-                    <div class="col-sm-2 border daily_beer">
-                        Beer
-                    </div>
-                    <div class="col-sm-2 border daily_beer_photo">
-                        Beer Photo
-                    </div>
-                    <div class="col-sm-2 border daily_beer_description">
-                        Beer Description
-                    </div>
+            </div>
+            <div class="row daily mt-5">
+                <div class="col-sm-2 border">
+                    Daily
                 </div>
-                <div class="row weekly mt-5">
-                    <div class="col-sm-2 border">
-                        Weekly
-                    </div>
-                    <div class="col-sm-2 border weekly_percentage">
-                        Weekly %
-                    </div>
-                    <div class="col-sm-2 border weekly_graph">
-                        Graph
-                    </div>
-                    <div class="col-sm-2 border weekly_beer">
-                        Beer
-                    </div>
-                    <div class="col-sm-2 border weekly_beer_photo">
-                        Beer Photo
-                    </div>
-                    <div class="col-sm-2 border weekly_beer_description">
-                        Beer Description
-                    </div>
+                <div class="col-sm-2 border daily_percentage">
+                    Daily %
                 </div>
-                <div class="row monthly mt-5">
-                    <div class="col-sm-2 border">
-                        Monthly
-                    </div>
-                    <div class="col-sm-2 border monthly_percentage">
-                        Monthly %
-                    </div>
-                    <div class="col-sm-2 border monthly_graph">
-                        Graph
-                    </div>
-                    <div class="col-sm-2 border monthly_beer">
-                        Beer
-                    </div>
-                    <div class="col-sm-2 border monthly_beer_photo">
-                        Beer Photo
-                    </div>
-                    <div class="col-sm-2 border monthly_beer_description">
-                        Beer Description
-                    </div>
+                <div class="col-sm-2 border daily_graph">
+                    Graph
                 </div>
+                <div class="col-sm-2 border daily_beer">
+                    Beer
+                </div>
+                <div class="col-sm-2 border daily_beer_photo">
+                    Beer Photo
+                </div>
+                <div class="col-sm-2 border daily_beer_description">
+                    Beer Description
+                </div>
+            </div>
+            <div class="row weekly mt-5">
+                <div class="col-sm-2 border">
+                    Weekly
+                </div>
+                <div class="col-sm-2 border weekly_percentage">
+                    Weekly %
+                </div>
+                <div class="col-sm-2 border weekly_graph">
+                    Graph
+                </div>
+                <div class="col-sm-2 border weekly_beer">
+                    Beer
+                </div>
+                <div class="col-sm-2 border weekly_beer_photo">
+                    Beer Photo
+                </div>
+                <div class="col-sm-2 border weekly_beer_description">
+                    Beer Description
+                </div>
+            </div>
+            <div class="row monthly mt-5">
+                <div class="col-sm-2 border">
+                    Monthly
+                </div>
+                <div class="col-sm-2 border monthly_percentage">
+                    Monthly %
+                </div>
+                <div class="col-sm-2 border monthly_graph">
+                    Graph
+                </div>
+                <div class="col-sm-2 border monthly_beer">
+                    Beer
+                </div>
+                <div class="col-sm-2 border monthly_beer_photo">
+                    Beer Photo
+                </div>
+                <div class="col-sm-2 border monthly_beer_description">
+                    Beer Description
+                </div>
+            </div>
 
 
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-dark" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 my-1 text-center">
+                    <p class="text-muted">© Copyright 2017</p>
+                </div>
             </div>
         </div>
-
-
-        <!-- Footer -->
-        <footer class="bg-dark" id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 my-1 text-center">
-                        <p class="text-muted">© Copyright 2017</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- firebase -->
-        <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-        <!-- jquery -->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    </footer>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-        <!-- popper.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <!-- popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
-        <!-- bootstrap.js -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+    <!-- bootstrap.js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
             crossorigin="anonymous"></script>
-        <!-- app.js -->
-        <script type="text/javascript" src="assets/javascript/app.js"></script>
-        <script src="assets/javascript/jquery.easy-autocomplete.min.js"></script>
-        <!-- <script src="assets/javascript/typeahead.jquery.min.js"></script> -->
+    <!-- app.js -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/jquery.easy-autocomplete.min.js"></script>
+    <!-- <script src="assets/javascript/typeahead.jquery.min.js"></script> -->
 
-        <script src="assets/javascript/typeahead.js"></script>
+    <script src="assets/javascript/typeahead.js"></script>
 
-    </body>
+</body>
 
-    </html>
+</html>
