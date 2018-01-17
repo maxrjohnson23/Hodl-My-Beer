@@ -2,33 +2,34 @@
 //global var
 //firebase
 
-  // Initialize Firebase
-  var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyD7p-vvXrxOOb8X_0MJiVekPqAVUKW4p70",
     authDomain: "hodl-my-beer.firebaseapp.com",
     databaseURL: "https://hodl-my-beer.firebaseio.com",
     projectId: "hodl-my-beer",
     storageBucket: "hodl-my-beer.appspot.com",
     messagingSenderId: "946695384034"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 // Create a variable to reference the database.
 var database = firebase.database();
 
 // pulling crypto data
-function pullCrypto(){
+function pullCrypto(callBack) {
     var queryURL = "https://api.coinmarketcap.com/v1/ticker/";
     $.ajax({
-    url: queryURL,
-    method: "GET"
-    }).done(function(cryptoResponse) {
-    console.log(cryptoResponse);
+        url: queryURL,
+        method: "GET",
+        success: callBack
+    }).done(function (cryptoResponse) {
+        console.log(cryptoResponse);
     });
 }
 
 // pulling beer data
-// beer variables 
+// beer variables
 var abv = Math.abs(5.8); //5.8 is a test, this will eventually be our % change from crypto
 var abvLower = Math.floor(abv); //create range for queryURL
 var abvHigher = Math.ceil(abv);
@@ -44,11 +45,11 @@ function pullBeer(){
     }).done(function(beerResponse) {
         console.log(beerResponse);
         for (i = 0; i < beerResponse.length; i++){
-            var returnABV = beerResponse[i].abv 
+            var returnABV = beerResponse[i].abv
             filterResult.push(returnABV); //collecting all returned ABVs
             if (returnABV === abv) { //where returned ABV matches % from crypto
                 beerArray.push(i);  //add to beerArray
-            } 
+            }
         }
         console.log(filterResult);
         console.log(beerArray);
