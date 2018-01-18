@@ -40,8 +40,9 @@ function configureSearchBar(currencyNames) {
         }, theme: "square", cssClasses: "form-control form-control-sm fix-autocomplete input-group",
 
     };
-    $('.typeahead').easyAutocomplete(config);
+    $('.auto-complete').easyAutocomplete(config);
     // Fix for working with bootstrap input-group and alignment
+    $(".easy-autocomplete").removeAttr("style");
     let $easyContainer = $(".easy-autocomplete-container");
     $easyContainer.css("text-align", "left");
     $easyContainer.css("margin-top", "40px");
