@@ -28,6 +28,15 @@ function pullCrypto(callBack) {
     });
 }
 
+function pullCryptoSingleCurrency(currId, callBack) {
+    var queryURL = `https://api.coinmarketcap.com/v1/ticker/${currId}/`;
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        success: callBack
+    });
+}
+
 // pulling beer data
 // beer variables
 var abv = Math.abs(5.8); //5.8 is a test, this will eventually be our % change from crypto
@@ -44,8 +53,8 @@ function pullBeer(){
     method: "GET"
     }).done(function(beerResponse) {
         console.log(beerResponse);
-        for (i = 0; i < beerResponse.length; i++){
-            var returnABV = beerResponse[i].abv
+        for (let i = 0; i < beerResponse.length; i++){
+            var returnABV = beerResponse[i].abv;
             filterResult.push(returnABV); //collecting all returned ABVs
             if (returnABV === abv) { //where returned ABV matches % from crypto
                 beerArray.push(i);  //add to beerArray
@@ -58,4 +67,28 @@ function pullBeer(){
         }
     });
 }
+
+$("#search-currency").on("click", function() {
+    // Get value from data attribute
+    let currId = $(this).attr("currency");
+    if(currId) {
+        pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
+    }
+});
+
+function setCurrencyStatsOnUI(data) {
+    // format from API
+    let currencyData = data[0];
+
+    let percentHour = currencyData.percent_change_1h;
+    let percentDay = currencyData.percent_change_24h;
+    let percentWeek = currencyData.percent_change_7d;
+
+    console.log("hour:" + percentHour);
+    console.log("day:" + percentDay);
+    console.log("week:" + percentWeek);
+
+}
+
+
 

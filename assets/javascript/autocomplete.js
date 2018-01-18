@@ -1,23 +1,16 @@
-
 // Populate currency list from Currency API
 function populateCurrencyNames() {
 
     pullCrypto(function (cryptoList) {
-        let currencyNames = [];
+        // Store full list in firebase
+        database.ref("/cryptoList").set(cryptoList);
 
-        // Store "Name (Symbol)" for each currency"
-        for (let i = 0; i < cryptoList.length; i++) {
-            let currencyName = `${cryptoList[i].name} (${cryptoList[i].symbol})`;
-            currencyNames.push(currencyName);
-        }
-        // Store in firebase
-        database.ref("/currencyNames").set(currencyNames);
-    })
+    });
 }
 
 
 // Populate the search bar with currency names from firebase
-database.ref("/currencyNames").once("value", function (snapshot) {
+database.ref("/cryptoList").once("value", function (snapshot) {
     let currencyNames = snapshot.val();
     if (!currencyNames) {
         // Refresh data from API
@@ -31,13 +24,24 @@ database.ref("/currencyNames").once("value", function (snapshot) {
 
 ////////////  Configuration and functions for the easyautocomplete plugin ////////////
 function configureSearchBar(currencyNames) {
+
     // Config for easyautocomplete plugin
     let config = {
-        data: currencyNames, list: {
+        data: currencyNames,
+        getValue: function(element) {
+            // display Name (Symbol) for all currencies in the dropdown
+            return `${element.name} (${element.symbol})`;
+        },
+        list: {
             match: {
                 enabled: true
+            },
+            onSelectItemEvent: function () {
+                // Get id of the currency and store as data on the search button
+                let value = $(".auto-complete").getSelectedItemData().id;
+                $("#search-currency").attr("currency", value);
             }
-        }, theme: "square", cssClasses: "form-control form-control-sm fix-autocomplete input-group",
+        }, theme: "square", cssClasses: "form-control form-control-sm fix-autocomplete input-group"
 
     };
     $('.auto-complete').easyAutocomplete(config);
