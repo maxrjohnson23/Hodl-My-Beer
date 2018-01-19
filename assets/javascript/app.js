@@ -51,16 +51,16 @@ btnSignout.on('click', function(e){
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
-        name = user.displayName;
-        email = user.email;
-        photoUrl = user.photoURL;
-        emailVerified = user.emailVerified;
-        uid = user.uid;
-        console.log("name: " + name);
-        console.log("email: " + email);
-        console.log("photoURL: " + photoUrl);
-        console.log("emailverified: " + emailVerified);
-        console.log("uid: " + uid);
+        // name = user.displayName;
+        // email = user.email;
+        // photoUrl = user.photoURL;
+        // emailVerified = user.emailVerified;
+        // uid = user.uid;
+        // console.log("name: " + name);
+        // console.log("email: " + email);
+        // console.log("photoURL: " + photoUrl);
+        // console.log("emailverified: " + emailVerified);
+        // console.log("uid: " + uid);
     } else {
         console.log('not logged in');
     };
