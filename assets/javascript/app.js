@@ -20,7 +20,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 // USER AUTHENTICATION
 var btnLogin = $('.btnLogin');
-var btnLogout = $('.btnLogout');
+var btnLogout = $('.btnSignout');
 
 btnLogin.on('click', function(e){
     // Sign In
@@ -50,7 +50,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         $('.btnLogin').addClass('d-none');
     } else {
         console.log('not logged in');
-    }
+    };
 });
 
 // pulling crypto data
