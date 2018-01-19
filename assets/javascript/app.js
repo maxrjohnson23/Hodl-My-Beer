@@ -33,7 +33,7 @@ $('.container').on('click', btnLogin, function(e){
     });
 });
 
-$('.container').on('click', btnLogout, function(e){
+$('.container').on('click', btnSignout, function(e){
     console.log('signout button firing');
     // Sign Out
     firebase.auth().signOut().then(function() {
