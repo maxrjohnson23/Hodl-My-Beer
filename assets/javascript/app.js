@@ -22,18 +22,16 @@ var provider = new firebase.auth.GoogleAuthProvider();
 var btnLogin = $('.btnLogin');
 var btnSignout = $('.btnSignout');
 
-$('.container').on('click', btnLogin, function(e){
+btnLogin.on('click', function(e){
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         var token = result.credential.accessToken;
-        var user = result.user;
-        console.log('Welcome ' + user);
     }).catch(function(e) {
         console.log(e.message)
     });
 });
 
-$('.container').on('click', btnSignout, function(e){
+btnSignout.on('click', function(e){
     console.log('signout button firing');
     // Sign Out
     firebase.auth().signOut().then(function() {
