@@ -38,8 +38,13 @@ function configureSearchBar(currencyNames) {
             },
             onSelectItemEvent: function () {
                 // Get id of the currency and store as data on the search button
-                let value = $(".auto-complete").getSelectedItemData().id;
-                $("#search-currency").attr("currency", value);
+                $autoComplete = $(".auto-complete");
+                let currId = $autoComplete.getSelectedItemData().id;
+                let currSymbol = $autoComplete.getSelectedItemData().symbol;
+                let $searchBtn = $("#search-currency");
+                $searchBtn.attr("data-curr-id", currId);
+                $searchBtn.attr("data-curr-symbol", currSymbol);
+
             }
         }, theme: "square", cssClasses: "form-control form-control-sm fix-autocomplete input-group"
 
