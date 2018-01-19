@@ -17,6 +17,8 @@ var database = firebase.database();
 
 // Create variable to reference access google authentication
 var provider = new firebase.auth.GoogleAuthProvider();
+var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
 
 // USER AUTHENTICATION
 var btnLogin = $('.btnLogin');
@@ -25,17 +27,21 @@ var btnSignout = $('.btnSignout');
 btnLogin.on('click', function(e){
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
+        console.log('Successfully signed in');
         var token = result.credential.accessToken;
+        $('.btnSignout').removeClass('d-none');
+        $('.btnLogin').addClass('d-none');
     }).catch(function(e) {
         console.log(e.message)
     });
 });
 
 btnSignout.on('click', function(e){
-    console.log('signout button firing');
     // Sign Out
     firebase.auth().signOut().then(function() {
         console.log('Successfully signed out');
+        $('.btnSignout').addClass('d-none');
+        $('.btnLogin').removeClass('d-none');
     }).catch(function(e) {
         console.log(e.message)
     });
@@ -45,8 +51,16 @@ btnSignout.on('click', function(e){
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
-        $('.btnSignout').removeClass('d-none');
-        $('.btnLogin').addClass('d-none');
+        name = user.displayName;
+        email = user.email;
+        photoUrl = user.photoURL;
+        emailVerified = user.emailVerified;
+        uid = user.uid;
+        console.log("name: " + name);
+        console.log("email: " + email);
+        console.log("photoURL: " + photoUrl);
+        console.log("emailverified: " + emailVerified);
+        console.log("uid: " + uid);
     } else {
         console.log('not logged in');
     };
