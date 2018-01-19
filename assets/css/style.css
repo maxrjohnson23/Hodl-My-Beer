@@ -18,3 +18,9 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.beerIMG {
+    width: 90px;
+    position: relative;
+    overflow: auto;
+}

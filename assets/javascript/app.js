@@ -113,39 +113,127 @@ function pullCryptoSingleCurrency(currId, callBack) {
     });
 }
 
+var percents = {
+    day: 5.5,
+    week: 5.5
+};
+
 // pulling beer data
 // beer variables
-var abv = Math.abs(5.8); //5.8 is a test, this will eventually be our % change from crypto
-var abvLower = Math.floor(abv); //create range for queryURL
-var abvHigher = Math.ceil(abv);
 var filterResult = []; // array for collecting all results' ABVs
 var beerArray = [];//array where % for crypto matches returned ABVs
 var roundingArray = []; // for use in rounding when % crypto !== any returned ABVs
+var abv;
 
-function pullBeer(){
-    var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
-    $.ajax({
-    url: queryURL,
-    method: "GET"
-    }).done(function(beerResponse) {
-        console.log(beerResponse);
-        for (let i = 0; i < beerResponse.length; i++){
-            var returnABV = beerResponse[i].abv;
-            filterResult.push(returnABV); //collecting all returned ABVs
-            if (returnABV === abv) { //where returned ABV matches % from crypto
-                beerArray.push(i);  //add to beerArray
+function pullDaily(){
+    
+        abv = Math.abs(percents.day); //5.8 is a test, this will eventually be our % change from crypto
+        var abvLower = Math.floor(abv); //create range for queryURL
+        var abvHigher = Math.ceil(abv);
+        var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+        }).done(function(beerResponse) {
+            console.log(beerResponse);
+            for (let i = 0; i < beerResponse.length; i++){
+                var returnABV = beerResponse[i].abv;
+                filterResult.push(returnABV); //collecting all returned ABVs
+                if (returnABV === abv) { //where returned ABV matches % from crypto
+                    beerArray.push(i);  //add to beerArray
+                }
             }
+            console.log(filterResult);
+            console.log(beerArray);
+            for (j = 0; j < beerArray.length; j++) {
+                console.log(beerResponse[j]); // print results for matching beers
+            }
+            var testBeer = beerResponse[0];
+            console.log(testBeer);
+            var beerImage = testBeer.image_url;
+            console.log(beerImage);
+            var printABV = testBeer.abv;            
+            var popImage = $("<img>", {
+                class: "beerIMG",
+                id: testBeer.name,
+                src: beerImage,
+                alt: "a picture of the beer"
+            });
+            var beerDes = $("<p>").text(testBeer.description);
+            var beerName = $("<p>").text(testBeer.name);
+                $(".daily_beer").append(beerName);
+                $(".daily_beer").append("ABV: " + printABV);                
+                $(".daily_beer_photo").append(popImage);
+                $(".daily_beer_description").append(beerDes);
+                pullWeekly();
+        });
+    }
+
+    function pullWeekly(){
+        
+            abv = Math.abs(percents.week); //5.8 is a test, this will eventually be our % change from crypto
+            var abvLower = Math.floor(abv); //create range for queryURL
+            var abvHigher = Math.ceil(abv);
+            var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
+            $.ajax({
+            url: queryURL,
+            method: "GET"
+            }).done(function(beerResponse) {
+                console.log(beerResponse);
+                for (let i = 0; i < beerResponse.length; i++){
+                    var returnABV = beerResponse[i].abv;
+                    filterResult.push(returnABV); //collecting all returned ABVs
+                    if (returnABV === abv) { //where returned ABV matches % from crypto
+                        beerArray.push(i);  //add to beerArray
+                    }
+                }
+                console.log(filterResult);
+                console.log(beerArray);
+                for (j = 0; j < beerArray.length; j++) {
+                    console.log(beerResponse[j]); // print results for matching beers
+                }
+                var testBeer = beerResponse[0];
+                console.log(testBeer);
+                var beerImage = testBeer.image_url;
+                console.log(beerImage);
+                var printABV = testBeer.abv;
+                var popImage = $("<img>", {
+                    class: "beerIMG",
+                    id: testBeer.name,
+                    src: beerImage,
+                    alt: "a picture of the beer"
+                });
+                var beerDes = $("<p>").text(testBeer.description);
+                var beerName = $("<p>").text(testBeer.name);
+                    $(".weekly_beer").append(beerName);
+                    $(".weekly_beer").append("ABV: " + printABV);
+                    $(".weekly_beer_photo").append(popImage);
+                    $(".weekly_beer_description").append(beerDes);    
+            });
         }
-        console.log(filterResult);
-        console.log(beerArray);
-        for (i = 0; i < beerArray.length; i++) {
-            console.log(beerResponse[i]); // print results for matching beers
-        }
-    });
+// }//close for loop
+// }//close pullBeer()
+
+function odouls() { //function when % is too low
+    console.log("odouls");
+};
+
+function sixpack() {//function when % is too high
+    console.log("sixpack");
+};
+
+function emptyDivs(){
+    $(".daily_beer").empty();
+    $(".daily_beer_photo").empty();
+    $(".daily_beer_description").empty();
+    $(".weekly_beer").empty();
+    $(".weekly_beer_photo").empty();
+    $(".weekly_beer_description").empty();
 }
 
 $("#search-currency").on("click", function() {
     // Get value from data attribute
+    emptyDivs();
     let currId = $(this).attr("data-curr-id");
     if(currId) {
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
@@ -163,8 +251,17 @@ function setCurrencyStatsOnUI(data) {
     console.log("hour:" + percentHour);
     console.log("day:" + percentDay);
     console.log("week:" + percentWeek);
+    percents.day = percentDay;
+    percents.week = percentWeek;
+    
+    pullDaily();
 
 }
 
+
+
+
+
+    
 
 
