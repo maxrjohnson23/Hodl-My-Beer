@@ -1,7 +1,5 @@
 
 
-//global var
-//firebase
 
 // Initialize Firebase
 var config = {
@@ -16,52 +14,24 @@ firebase.initializeApp(config);
 
 // Create a variable to reference the database.
 var database = firebase.database();
+
+// Create variable to reference access google authentication
 var provider = new firebase.auth.GoogleAuthProvider();
 
 // USER AUTHENTICATION
 
-
-var txtEmail = $('.txtEmail');
-var txtPassword = $('.txtPassword');
-var btnLogin = $('.btnLogin');
-var btnSignUp = $('.btnSignUp');
-var btnLogout = $('.btnLogout');
-
-var provider = new firebase.auth.GoogleAuthProvider();
-
 btnLogin.on('click', function(e){
-    // Get email and pass
-    var email = txtEmail.val();
-    var password = txtPassword.val();
+    var btnLogin = $('.btnLogin');
     var auth = firebase.auth();
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
-       var token = result.credential.accessToken;
-      var user = result.user;
+        var token = result.credential.accessToken;
+        var user = result.user;
+        console.log('Welcome ' + user);
     }).catch(function(e) {
         console.log(e.message)
     });
-
-    // var promise = auth.signInWithEmailAndPassword(email, password);
-    // promise.catch(e => console.log(e.message));
 });
-
-
-
-// Add signup event
-// btnSignUp.on('click', function(e){
-//     // Get email and pass
-//     var email = txtEmail.val();
-//     var password = txtPassword.val();
-//     var auth = firebase.auth();
-//     // Sign In
-//     var promise = auth.createUserWithEmailAndPassword(email, password);
-//     promise.catch(e => console.log(e.message));
-// });
-
-// btnLogout.on('click', function(e) {
-//     firebase.auth().signOut();
-// });
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -71,26 +41,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         console.log('not logged in');
     }
 });
-
-// $('.navbar-btn').on('click',function() {
-//     console.log('button');
-//     firebase.auth().signInWithPopup(provider).then(function(result) {
-//         // This gives you a Google Access Token. You can use it to access the Google API.
-//         var token = result.credential.accessToken;
-//         // The signed-in user info.
-//         var user = result.user;
-//         // ...
-//         }).catch(function(error) {
-//         // Handle Errors here.
-//         var errorCode = error.code;
-//         var errorMessage = error.message;
-//         // The email of the user's account used.
-//         var email = error.email;
-//         // The firebase.auth.AuthCredential type that was used.
-//         var credential = error.credential;
-//         // ...
-//         });
-// });
 
 // pulling crypto data
 function pullCrypto(callBack) {
