@@ -37,11 +37,12 @@ function configureSearchBar(currencyNames) {
                 enabled: true
             },
             onSelectItemEvent: function () {
-                // Get id of the currency and store as data on the search button
-                $autoComplete = $(".auto-complete");
+                // Get id and symbol of the currency and store as data on the search button
+                let $autoComplete = $(".auto-complete");
                 let currId = $autoComplete.getSelectedItemData().id;
                 let currSymbol = $autoComplete.getSelectedItemData().symbol;
                 let $searchBtn = $("#search-currency");
+                // Store as data attributes
                 $searchBtn.attr("data-curr-id", currId);
                 $searchBtn.attr("data-curr-symbol", currSymbol);
 
