@@ -20,9 +20,9 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 // USER AUTHENTICATION
 var btnLogin = $('.btnLogin');
+var btnLogout = $('.btnLogout');
 
 btnLogin.on('click', function(e){
-    var auth = firebase.auth();
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         var token = result.credential.accessToken;
@@ -33,11 +33,21 @@ btnLogin.on('click', function(e){
     });
 });
 
+btnLogout.on('click', function(e){
+    // Sign Out
+    firebase.auth().signOut().then(function() {
+        console.log('Successfully signed out');
+    }).catch(function(e) {
+        console.log(e.message)
+    });
+});
+
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
-        console.log(firebaseUser.Aa.cs.displayName.val());
+        $('.btnSignout').removeClass('d-none');
+        $('.btnLogin').addClass('d-none');
     } else {
         console.log('not logged in');
     }
