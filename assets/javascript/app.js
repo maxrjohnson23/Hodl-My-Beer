@@ -19,9 +19,9 @@ var database = firebase.database();
 var provider = new firebase.auth.GoogleAuthProvider();
 
 // USER AUTHENTICATION
+var btnLogin = $('.btnLogin');
 
 btnLogin.on('click', function(e){
-    var btnLogin = $('.btnLogin');
     var auth = firebase.auth();
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
@@ -37,6 +37,7 @@ btnLogin.on('click', function(e){
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
+        console.log(firebaseUser.Aa.cs.displayName.val());
     } else {
         console.log('not logged in');
     }
