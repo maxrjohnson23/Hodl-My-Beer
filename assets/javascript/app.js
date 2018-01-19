@@ -70,7 +70,7 @@ function pullBeer(){
 
 $("#search-currency").on("click", function() {
     // Get value from data attribute
-    let currId = $(this).attr("currency");
+    let currId = $(this).attr("data-curr-id");
     if(currId) {
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
     }
