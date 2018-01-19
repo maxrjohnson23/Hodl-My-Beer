@@ -20,9 +20,9 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 // USER AUTHENTICATION
 var btnLogin = $('.btnLogin');
-var btnLogout = $('.btnSignout');
+var btnSignout = $('.btnSignout');
 
-btnLogin.on('click', function(e){
+$('.container').on('click', btnLogin, function(e){
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         var token = result.credential.accessToken;
@@ -33,7 +33,8 @@ btnLogin.on('click', function(e){
     });
 });
 
-btnLogout.on('click', function(e){
+$('.container').on('click', btnLogout, function(e){
+    console.log('signout button firing');
     // Sign Out
     firebase.auth().signOut().then(function() {
         console.log('Successfully signed out');
