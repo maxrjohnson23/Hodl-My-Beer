@@ -30,8 +30,20 @@
                         <a class="nav-link" href="#">Name</a>
                     </li>
                 </ul>
-                <a class="btn navbar-btn ml-2 text-white btn-secondary">
-                    <i class="fa d-inline fa-lg fa-user-circle-o"></i> Sign in</a>
+                <input placeholder="email" class="txtEmail">
+                <input placeholder="password" class="txtPassword">
+                <button class="btn navbar-btn ml-2 text-white btn-secondary btnLogin">
+                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
+                    Log in
+                </button>
+                <button class="btn navbar-btn ml-2 text-white btn-secondary btnSignUp">
+                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
+                    Sign up
+                </button>
+                <button class="btn navbar-btn ml-2 text-white btn-secondary btnLogout invisible">
+                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
+                    Log out
+                </button>
             </div>
         </div>
     </nav>
@@ -131,6 +143,10 @@
     </footer>
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+
+<!-- Leave out Storage -->
+<!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-storage.js"></script> -->
+
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
