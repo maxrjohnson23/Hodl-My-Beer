@@ -140,8 +140,8 @@ function pullDaily(){
             var nameRow = $("<div class='row dNameRow result'>");
             var imageRow = $("<div class='row dImageRow result'>");
             var desRow = $("<div class='row dDesRow result'>");
-            var nameDiv = $("<div class='dailyNameDiv'>");
-            var imageDiv = $("<div class='dailyImageDiv'>");
+            var nameDiv = $("<div class='dailyNameDiv mx-auto'>");
+            var imageDiv = $("<div class='dailyImageDiv mx-auto'>");
             var desDiv = $("<div class='dailyDesDiv'>");
             var printABV = testBeer.abv;            
             var popImage = $("<img>", {
@@ -196,8 +196,8 @@ function pullDaily(){
                 var nameRow = $("<div class='row wNameRow result'>");
                 var imageRow = $("<div class='row wImageRow result'>");
                 var desRow = $("<div class='row wDesRow result'>");
-                var nameDiv = $("<div class='weeklyNameDiv'>");
-                var imageDiv = $("<div class='weeklyImageDiv'>");
+                var nameDiv = $("<div class='weeklyNameDiv mx-auto'>");
+                var imageDiv = $("<div class='weeklyImageDiv mx-auto'>");
                 var desDiv = $("<div class='weeklyDesDiv'>");
                 var printABV = testBeer.abv;            
                 var popImage = $("<img>", {
