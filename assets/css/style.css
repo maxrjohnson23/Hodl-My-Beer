@@ -1,3 +1,7 @@
+body {
+    /* background-image: url("../images/background1.jpeg"); */
+}
+
 /* Classes for easyautocomplete */
 .eac-square input {
     background: url("../images/icon_search.png") no-repeat right 10px center;
