@@ -17,8 +17,7 @@ var database = firebase.database();
 var loginRef = database.ref('/login');
 var userRef = database.ref('/users');
 
-// Create variable to access google authentication
-var provider =  new firebase.auth.GoogleAuthProvider();
+
 // var user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
 
@@ -52,14 +51,25 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             console.log("  Email: " + email);
             console.log("  Photo URL: " + photoURL);
           });
-        userRef.push(uid);
+        writeUserData(uid, name, email, imageUrl);
     } else {
         console.log('not logged in');
     };
 });
 
+function writeUserData(userId, name, email, imageUrl) {
+    firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl
+    });
+};
+
+
 btnLogin.on('click', function(e){
     e.preventDefault();
+    // Create variable to access google authentication
+    var provider =  new firebase.auth.GoogleAuthProvider();
     loginRef.set('loggedIn');
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
@@ -72,6 +82,7 @@ btnLogin.on('click', function(e){
 
 btnSignout.on('click', function(e){
     e.preventDefault();
+    var provider =  new firebase.auth.GoogleAuthProvider();
     loginRef.set('loggedOut');
     // Sign Out
     firebase.auth().signOut().then(function() {
