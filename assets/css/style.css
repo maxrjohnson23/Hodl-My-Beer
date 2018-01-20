@@ -1,3 +1,21 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+#logo {
+    width: 350px;
+}
+
+body {
+    margin-bottom: 55px; /* Margin bottom by footer height */
+
+    /* potential background? */
+     /* background-image: url("../images/background1.jpeg"); */ 
+    /* background-position: center; */
+    /* background-size:cover; */
+}
+
 /* Classes for easyautocomplete */
 .eac-square input {
     background: url("../images/icon_search.png") no-repeat right 10px center;
@@ -18,13 +36,37 @@
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
+    height: 55px;
+    line-height: 50px; /* Vertically center the text there */
+    text-align: center;
+    border-top: 5px solid #257EF6;
 }
-.header-div{
+
+.beerIMG {
+    width: 90px;
+    position: relative;
+    overflow: auto;
+}
+
+.header-div {
     display: none;
 }
+
 .header-div ~ div:nth-child(-n+7) {
     display: none;
+}
+
+.results-area{
+    display: none;
+}
+
+.daily, .weekly {
+    font-weight: 700;
+}
+
+.result {
+    font-weight: 400;
 }
