@@ -223,20 +223,8 @@ function sixpack() {//function when % is too high
 
 function emptyDivs(){
     $(".result").empty();
-    // $(".daily_beer_photo").empty();
-    // $(".daily_beer_description").empty();
-    // $(".weekly_beer").empty();
-    // $(".weekly_beer_photo").empty();
-    // $(".weekly_beer_description").empty();
-
-        console.log(filterResult);
-        console.log(beerArray);
-        for (var i = 0; i < beerArray.length; i++) {
-            console.log(beerResponse[i]); // print results for matching beers
         }
-    });
-
-}
+   
 
 $("#search-currency").on("click", function() {
     // Get value from data attribute
