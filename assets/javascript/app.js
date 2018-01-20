@@ -14,6 +14,7 @@ firebase.initializeApp(config);
 
 // Create a variable to reference the database.
 var database = firebase.database();
+var loginRef = database.ref("/login");
 
 // Create variable to reference access google authentication
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -24,9 +25,21 @@ var name, email, photoUrl, uid, emailVerified;
 var btnLogin = $('.btnLogin');
 var btnSignout = $('.btnSignout');
 
+loginRef.on('value', function(snapshot) {
+    console.log('loginRef firing');
+    if (snapshot.val()=='loggedIn') {
+        $('.btnSignout').removeClass('d-none');
+        $('.btnLogin').addClass('d-none');
+    } else if (snapshot.val() == 'loggedOut') {
+        $('.btnSignout').addClass('d-none');
+        $('.btnLogin').removeClass('d-none');
+    };
+});
+
+console.log(loginRef == 'loggedIn');
+
 btnLogin.on('click', function(e){
-    $('.btnSignout').removeClass('d-none');
-    $('.btnLogin').addClass('d-none');
+    loginRef.set('loggedIn');
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         console.log('Successfully signed in');
@@ -37,6 +50,7 @@ btnLogin.on('click', function(e){
 });
 
 btnSignout.on('click', function(e){
+    loginRef.set('loggedOut');
     // Sign Out
     firebase.auth().signOut().then(function() {
         console.log('Successfully signed out');
