@@ -246,6 +246,7 @@ function emptyDivs(){
 $("#search-currency").on("click", function() {
     // Get value from data attribute
     emptyDivs();
+    $("#currency-input").val("");
     let currId = $(this).attr("data-curr-id");
     if(currId) {
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
