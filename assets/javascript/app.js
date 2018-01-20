@@ -158,7 +158,7 @@ function pullDaily(){
                 $(".dNameRow").append(nameDiv);
                 $(".dImageRow").append(imageDiv);
                 $(".dDesRow").append(desDiv);
-                $(".dailyNameDiv").append(beerName);
+                $(".dailyNameDiv").append("Name: " + testBeer.name + "<br>");
                 $(".dailyImageDiv").append(popImage);
                 $(".dailyDesDiv").append(beerDes);
                 $(".dailyNameDiv").append("ABV: " + printABV);
@@ -214,7 +214,7 @@ function pullDaily(){
                     $(".wNameRow").append(nameDiv);
                     $(".wImageRow").append(imageDiv);
                     $(".wDesRow").append(desDiv);
-                    $(".weeklyNameDiv").append(beerName);
+                    $(".weeklyNameDiv").append("Name: " + testBeer.name + "<br>");
                     $(".weeklyImageDiv").append(popImage);
                     $(".weeklyDesDiv").append(beerDes);
                     $(".weeklyNameDiv").append("ABV: " + printABV);    
