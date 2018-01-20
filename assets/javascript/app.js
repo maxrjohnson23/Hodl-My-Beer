@@ -39,6 +39,7 @@ loginRef.on('value', function(snapshot) {
 console.log(loginRef == 'loggedIn');
 
 btnLogin.on('click', function(e){
+    e.preventDefault();
     loginRef.set('loggedIn');
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
@@ -50,6 +51,8 @@ btnLogin.on('click', function(e){
 });
 
 btnSignout.on('click', function(e){
+
+    e.preventDefault();
     loginRef.set('loggedOut');
     // Sign Out
     firebase.auth().signOut().then(function() {
@@ -65,16 +68,16 @@ btnSignout.on('click', function(e){
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
-        // name = user.displayName;
-        // email = user.email;
-        // photoUrl = user.photoURL;
-        // emailVerified = user.emailVerified;
-        // uid = user.uid;
-        // console.log("name: " + name);
-        // console.log("email: " + email);
-        // console.log("photoURL: " + photoUrl);
-        // console.log("emailverified: " + emailVerified);
-        // console.log("uid: " + uid);
+        name = user.displayName;
+        email = user.email;
+        photoUrl = user.photoURL;
+        emailVerified = user.emailVerified;
+        uid = user.uid;
+        console.log("name: " + name);
+        console.log("email: " + email);
+        console.log("photoURL: " + photoUrl);
+        console.log("emailverified: " + emailVerified);
+        console.log("uid: " + uid);
     } else {
         console.log('not logged in');
     };
