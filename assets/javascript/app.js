@@ -35,8 +35,20 @@ loginRef.on('value', function(snapshot) {
         $('.btnLogin').removeClass('d-none');
     };
 });
-
-console.log(loginRef == 'loggedIn');
+// Add a realtime listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser) {
+        firebaseUser.providerData.forEach(function (profile) {
+            console.log("Sign-in provider: " + profile.providerId);
+            console.log("  Provider-specific UID: " + profile.uid);
+            console.log("  Name: " + profile.displayName);
+            console.log("  Email: " + profile.email);
+            console.log("  Photo URL: " + profile.photoURL);
+          });
+    } else {
+        console.log('not logged in');
+    };
+});
 
 btnLogin.on('click', function(e){
     e.preventDefault();
@@ -64,24 +76,6 @@ btnSignout.on('click', function(e){
     });
 });
 
-// Add a realtime listener
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser) {
-        console.log(firebaseUser);
-        name = user.displayName;
-        email = user.email;
-        photoUrl = user.photoURL;
-        emailVerified = user.emailVerified;
-        uid = user.uid;
-        console.log("name: " + name);
-        console.log("email: " + email);
-        console.log("photoURL: " + photoUrl);
-        console.log("emailverified: " + emailVerified);
-        console.log("uid: " + uid);
-    } else {
-        console.log('not logged in');
-    };
-});
 
 // pulling crypto data
 function pullCrypto(callBack) {
