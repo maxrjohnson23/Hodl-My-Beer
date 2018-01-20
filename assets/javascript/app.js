@@ -112,7 +112,7 @@ function pullBeer(){
         }
         console.log(filterResult);
         console.log(beerArray);
-        for (i = 0; i < beerArray.length; i++) {
+        for (var i = 0; i < beerArray.length; i++) {
             console.log(beerResponse[i]); // print results for matching beers
         }
     });
