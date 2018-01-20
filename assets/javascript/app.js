@@ -41,10 +41,11 @@ loginRef.on('value', function(snapshot) {
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         firebaseUser.providerData.forEach(function (profile) {
-            name = profile.displayName;
-            email = profile.email;
-            photoUrl = profile.photoURL;
-            uid = profile.uid;
+            name = user.displayName;
+            email = user.email;
+            photoURL = user.photoURL;
+            emailVerified = user.emailVerified;
+            uid = user.uid;
             console.log("Sign-in provider: " + profile.providerId);
             console.log("  Provider-specific UID: " + uid);
             console.log("  Name: " + name);
@@ -56,8 +57,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         console.log('not logged in');
     };
 });
-
-
 
 btnLogin.on('click', function(e){
     e.preventDefault();
