@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 // Create a variable to reference the database.
 var database = firebase.database();
 var loginRef = database.ref('/login');
-var userRef = database.ref('/users')
+var userRef = database.ref('/users');
 
 // Create variable to reference access google authentication
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -57,7 +57,8 @@ loginRef.on('value', function(snapshot) {
 // });
 
 //Get the firebase reference    
-    firebase.onAuth(function(authData) {
+var ref = new Firebase("https://hodl-my-beer.firebaseio.com");
+    ref.onAuth(function(authData) {
       if (authData && isNewUser) {
         // save the user's profile into Firebase so we can list users,
         // use them in Security and Firebase Rules, and show profiles
