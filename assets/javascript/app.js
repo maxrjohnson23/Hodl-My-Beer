@@ -152,12 +152,12 @@ function pullDaily(){
             console.log(testBeer);
             var beerImage = testBeer.image_url;
             console.log(beerImage);
-            var nameRow = $("<div class='row nameRow result'>");
-            var imageRow = $("<div class='row imageRow result'>");
-            var desRow = $("<div class='row desRow result'>");
-            var nameDiv = $("<div class='nameDiv'>");
-            var imageDiv = $("<div class='imageeDiv'>");
-            var desDiv = $("<div class='desDiv'>");
+            var nameRow = $("<div class='row dNameRow result'>");
+            var imageRow = $("<div class='row dImageRow result'>");
+            var desRow = $("<div class='row dDesRow result'>");
+            var nameDiv = $("<div class='dailyNameDiv'>");
+            var imageDiv = $("<div class='dailyImageDiv'>");
+            var desDiv = $("<div class='dailyDesDiv'>");
             var printABV = testBeer.abv;            
             var popImage = $("<img>", {
                 class: "beerIMG",
@@ -170,13 +170,13 @@ function pullDaily(){
                 $(".daily_beer").append(nameRow);                
                 $(".daily_beer_photo").append(imageRow);
                 $(".daily_beer_description").append(desRow);
-                $(".nameRow").append(nameDiv);
-                $(".imageRow").append(imageDiv);
-                $(".desRow").append(desDiv);
-                $(".nameDiv").append(beerName);
-                $(".imageDiv").append(popImage);
-                $(".desDiv").append(beerDes);
-                $(".nameDiv").append("ABV: " + printABV);
+                $(".dNameRow").append(nameDiv);
+                $(".dImageRow").append(imageDiv);
+                $(".dDesRow").append(desDiv);
+                $(".dailyNameDiv").append(beerName);
+                $(".dailyImageDiv").append(popImage);
+                $(".dailyDesDiv").append(beerDes);
+                $(".dailyNameDiv").append("ABV: " + printABV);
                 pullWeekly();
         });
     }
@@ -208,12 +208,12 @@ function pullDaily(){
                 console.log(testBeer);
                 var beerImage = testBeer.image_url;
                 console.log(beerImage);
-                var nameRow = $("<div class='row nameRow result'>");
-                var imageRow = $("<div class='row imageRow result'>");
-                var desRow = $("<div class='row desRow result'>");
-                var nameDiv = $("<div class='nameDiv'>");
-                var imageDiv = $("<div class='imageeDiv'>");
-                var desDiv = $("<div class='desDiv'>");
+                var nameRow = $("<div class='row wNameRow result'>");
+                var imageRow = $("<div class='row wImageRow result'>");
+                var desRow = $("<div class='row wDesRow result'>");
+                var nameDiv = $("<div class='weeklyNameDiv'>");
+                var imageDiv = $("<div class='weeklyImageDiv'>");
+                var desDiv = $("<div class='weeklyDesDiv'>");
                 var printABV = testBeer.abv;            
                 var popImage = $("<img>", {
                     class: "beerIMG",
@@ -226,13 +226,13 @@ function pullDaily(){
                     $(".weekly_beer").append(nameRow);                
                     $(".weekly_beer_photo").append(imageRow);
                     $(".weekly_beer_description").append(desRow);
-                    $(".nameRow").append(nameDiv);
-                    $(".imageRow").append(imageDiv);
-                    $(".desRow").append(desDiv);
-                    $(".nameDiv").append(beerName);
-                    $(".imageDiv").append(popImage);
-                    $(".desDiv").append(beerDes);
-                    $(".nameDiv").append("ABV: " + printABV);    
+                    $(".wNameRow").append(nameDiv);
+                    $(".wImageRow").append(imageDiv);
+                    $(".wDesRow").append(desDiv);
+                    $(".weeklyNameDiv").append(beerName);
+                    $(".weeklyImageDiv").append(popImage);
+                    $(".weeklyDesDiv").append(beerDes);
+                    $(".weeklyNameDiv").append("ABV: " + printABV);    
             });
         }
 // }//close for loop
@@ -247,12 +247,12 @@ function sixpack() {//function when % is too high
 };
 
 function emptyDivs(){
-    $(".daily_beer").empty();
-    $(".daily_beer_photo").empty();
-    $(".daily_beer_description").empty();
-    $(".weekly_beer").empty();
-    $(".weekly_beer_photo").empty();
-    $(".weekly_beer_description").empty();
+    $(".result").empty();
+    // $(".daily_beer_photo").empty();
+    // $(".daily_beer_description").empty();
+    // $(".weekly_beer").empty();
+    // $(".weekly_beer_photo").empty();
+    // $(".weekly_beer_description").empty();
 }
 
 $("#search-currency").on("click", function() {
