@@ -1,8 +1,14 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 #logo {
     width: 350px;
 }
 
 body {
+    margin-bottom: 55px; /* Margin bottom by footer height */
     /* background-image: url("../images/background1.jpeg"); */
 }
 
@@ -26,9 +32,13 @@ body {
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
+    height: 55px;
+    line-height: 50px; /* Vertically center the text there */
+    text-align: center;
+    border-top: 5px solid #257EF6;
 }
 
 .beerIMG {
