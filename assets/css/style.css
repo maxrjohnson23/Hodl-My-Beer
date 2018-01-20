@@ -9,7 +9,11 @@ html {
 
 body {
     margin-bottom: 55px; /* Margin bottom by footer height */
-    /* background-image: url("../images/background1.jpeg"); */
+
+    /* potential background? */
+     /* background-image: url("../images/background1.jpeg"); */ 
+    /* background-position: center; */
+    /* background-size:cover; */
 }
 
 /* Classes for easyautocomplete */
@@ -57,4 +61,12 @@ footer {
 
 .results-area{
     display: none;
+}
+
+.daily, .weekly {
+    font-weight: 700;
+}
+
+.result {
+    font-weight: 400;
 }
