@@ -41,11 +41,11 @@ loginRef.on('value', function(snapshot) {
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         firebaseUser.providerData.forEach(function (profile) {
-            name = user.displayName;
-            email = user.email;
-            photoURL = user.photoURL;
-            emailVerified = user.emailVerified;
-            uid = user.uid;
+            name = profile.displayName;
+            email = profile.email;
+            photoURL = profile.photoURL;
+            emailVerified = profile.emailVerified;
+            uid = profile.uid;
             console.log("Sign-in provider: " + profile.providerId);
             console.log("  Provider-specific UID: " + uid);
             console.log("  Name: " + name);
