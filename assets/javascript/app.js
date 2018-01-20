@@ -121,6 +121,12 @@ function pullBeer(){
 $("#search-currency").on("click", function() {
     // Get value from data attribute
     let currId = $(this).attr("data-curr-id");
+    let cryptoSym = $(this).attr("data-curr-symbol");
+    console.log(cryptoSym);
+
+    widget(cryptoSym);
+    cryptoHeader(currId);
+
     if(currId) {
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
     }
@@ -130,17 +136,21 @@ function setCurrencyStatsOnUI(data) {
     // format from API
     let currencyData = data[0];
 
+    let price = currencyData.price_usd;
     let percentHour = currencyData.percent_change_1h;
     let percentDay = currencyData.percent_change_24h;
     let percentWeek = currencyData.percent_change_7d;
 
+    console.log("price: " + price);
     console.log("hour:" + percentHour);
     console.log("day:" + percentDay);
     console.log("week:" + percentWeek);
 
-    $(".daily_percentage").append('<div>'+percentDay+'%<div>');
-    $(".weekly_percentage").append('<div>'+percentWeek+'%<div>');
+    $(".percentDaily").html(" ");
+    $(".percentWeekly").html(" ");
 
+    $(".daily_percentage").append('<div class="percentDaily">'+percentDay+'%<div>');
+    $(".weekly_percentage").append('<div class="percentWeekly">'+percentWeek+'%<div>');
 }
 
 
