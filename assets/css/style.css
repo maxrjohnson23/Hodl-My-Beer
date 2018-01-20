@@ -17,6 +17,10 @@ body {
     padding-bottom: 2px !important;
 }
 
+.graph-icon:hover {
+    opacity: .5;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -27,4 +31,10 @@ footer {
     width: 90px;
     position: relative;
     overflow: auto;
+  
+.header-div{
+    display: none;
+}
+.header-div ~ div:nth-child(-n+7) {
+    display: none;
 }

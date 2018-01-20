@@ -29,19 +29,13 @@
                         <a class="nav-link" href="portfolio.html">My Portfolio</a>
                     </li>
                 </ul>
-                <input placeholder="email" class="txtEmail">
-                <input placeholder="password" class="txtPassword">
                 <button class="btn navbar-btn ml-2 text-white btn-secondary btnLogin">
                     <i class="fa d-inline fa-lg fa-user-circle-o"></i>
                     Log in
                 </button>
-                <button class="btn navbar-btn ml-2 text-white btn-secondary btnSignUp">
+                <button class="btn navbar-btn ml-2 text-white btn-secondary btnSignout d-none">
                     <i class="fa d-inline fa-lg fa-user-circle-o"></i>
-                    Sign up
-                </button>
-                <button class="btn navbar-btn ml-2 text-white btn-secondary btnLogout invisible">
-                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
-                    Log out
+                    Sign out
                 </button>
             </div>
         </div>
@@ -71,6 +65,9 @@
                 </div>
                 <div class="col-sm-2 border hourly_graph">
                     Graph
+                    <div class="row">
+                        <div class="col-sm-12 hourly_graph_img"></div>
+                    </div>
                 </div>
                 <div class="col-sm-2 border hourly_beer">
                     Beer
@@ -91,6 +88,9 @@
                 </div>
                 <div class="col-sm-2 border daily_graph">
                     Graph
+                    <div class="row">
+                        <div class="col-sm-12 daily_graph_img"></div>
+                    </div>
                 </div>
                 <div class="col-sm-2 border daily_beer">
                     Beer
@@ -111,6 +111,9 @@
                 </div>
                 <div class="col-sm-2 border weekly_graph">
                     Graph
+                    <div class="row">
+                        <div class="col-sm-12 weekly_graph_img"></div>
+                    </div>
                 </div>
                 <div class="col-sm-2 border weekly_beer">
                     Beer
@@ -159,6 +162,7 @@
             crossorigin="anonymous"></script>
     <!-- app.js -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="assets/javascript/graph.js"></script>
 
     <!--jquery easyautocompleteplugin and config-->
     <script src="assets/javascript/jquery.easy-autocomplete.min.js"></script>

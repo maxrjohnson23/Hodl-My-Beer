@@ -30,8 +30,14 @@
                         <a class="nav-link" href="index.html">Main</a>
                     </li>
                 </ul>
-                <a class="btn navbar-btn ml-2 text-white btn-secondary">
-                    <i class="fa d-inline fa-lg fa-user-circle-o"></i> Sign in</a>
+                <button class="btn navbar-btn ml-2 text-white btn-secondary btnLogin">
+                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
+                    Log in
+                </button>
+                <button class="btn navbar-btn ml-2 text-white btn-secondary btnSignout d-none">
+                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
+                    Sign out
+                </button>
             </div>
         </div>
     </nav>
@@ -49,6 +55,7 @@
             <table id="portfolio-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
+                    <th class="no-sort"></th>
                     <th>Symbol</th>
                     <th>Name</th>
                     <th>Hour %</th>
@@ -62,7 +69,10 @@
             </table>
 
 
-
+        </div>
+        <div id="currency-graph" class="container mb-5">
+            <!-- Anchor for dynamically loaded graph widgets-->
+            <script></script>
 
         </div>
     </div>
