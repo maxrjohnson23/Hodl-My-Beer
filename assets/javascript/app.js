@@ -138,6 +138,9 @@ function setCurrencyStatsOnUI(data) {
     console.log("day:" + percentDay);
     console.log("week:" + percentWeek);
 
+    $(".daily_percentage").append('<div>'+percentDay+'%<div>');
+    $(".weekly_percentage").append('<div>'+percentWeek+'%<div>');
+
 }
 
 
