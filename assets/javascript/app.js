@@ -10,8 +10,11 @@ var config = {
     storageBucket: "hodl-my-beer.appspot.com",
     messagingSenderId: "946695384034"
 };
-firebase.initializeApp(config);
+// firebase.initializeApp(config);
 
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 // Create a variable to reference the database.
 var database = firebase.database();
 var loginRef = database.ref('/login');
@@ -69,7 +72,7 @@ function writeUserData(userId, name, email, imageUrl) {
 btnLogin.on('click', function(e){
     e.preventDefault();
     // Create variable to access google authentication
-    var provider =  firebase.auth().GoogleAuthProvider();
+    var provider =  new firebase.auth.GoogleAuthProvider();
     loginRef.set('loggedIn');
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
@@ -83,7 +86,7 @@ btnLogin.on('click', function(e){
 
 btnSignout.on('click', function(e){
     e.preventDefault();
-    var provider =  firebase.auth().GoogleAuthProvider();
+    var provider =  new firebase.auth.GoogleAuthProvider();
     loginRef.set('loggedOut');
     // Sign Out
     firebase.auth().signOut().then(function() {
