@@ -14,7 +14,8 @@ firebase.initializeApp(config);
 
 // Create a variable to reference the database.
 var database = firebase.database();
-var loginRef = database.ref("/login");
+var loginRef = database.ref('/login');
+var userRef = database.ref('/users')
 
 // Create variable to reference access google authentication
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -36,19 +37,58 @@ loginRef.on('value', function(snapshot) {
     };
 });
 // Add a realtime listener
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser) {
-        firebaseUser.providerData.forEach(function (profile) {
-            console.log("Sign-in provider: " + profile.providerId);
-            console.log("  Provider-specific UID: " + profile.uid);
-            console.log("  Name: " + profile.displayName);
-            console.log("  Email: " + profile.email);
-            console.log("  Photo URL: " + profile.photoURL);
-          });
-    } else {
-        console.log('not logged in');
-    };
+// firebase.auth().onAuthStateChanged(firebaseUser => {
+//     if(firebaseUser) {
+//         firebaseUser.providerData.forEach(function (profile) {
+//             name = profile.displayName;
+//             email = profile.email;
+//             photoUrl = profile.photoURL;
+//             uid = profile.uid;
+//             console.log("Sign-in provider: " + profile.providerId);
+//             console.log("  Provider-specific UID: " + uid);
+//             console.log("  Name: " + name);
+//             console.log("  Email: " + email);
+//             console.log("  Photo URL: " + photoURL);
+//           });
+//         userRef.push(uid);
+//     } else {
+//         console.log('not logged in');
+//     };
+// });
+
+//Get the firebase reference    
+    firebase.onAuth(function(authData) {
+      if (authData && isNewUser) {
+        // save the user's profile into Firebase so we can list users,
+        // use them in Security and Firebase Rules, and show profiles
+        database.child("users").child(authData.uid).set({
+            provider: authData.provider,
+            name: getName(authData)
+          //some more user data
+            });
+        };
+    });
+
+//Get the correct firebase reference
+// var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com").child("users").child(authData.uid);
+var UserChildRef = firebase.child("users").child(authData.uid);
+//Get the data
+UserChildRef.once("value", function(data) {
+  // do some stuff once, user data will be in the variable data
 });
+
+database.ref("/players").on("value", function (snapshot) {
+    let players = snapshot.val();
+    // Wait for two players to join the game
+    if (snapshot.numChildren() === 2) {
+        // Store opponent name in game object
+        let opponentKey = Object.keys(players).find(function (key) {
+            return players[key].userName !== GAME.userName
+        });
+    };
+    GAME.opponentName = players[opponentKey].userName;
+});
+
 
 btnLogin.on('click', function(e){
     e.preventDefault();
@@ -63,7 +103,6 @@ btnLogin.on('click', function(e){
 });
 
 btnSignout.on('click', function(e){
-
     e.preventDefault();
     loginRef.set('loggedOut');
     // Sign Out
