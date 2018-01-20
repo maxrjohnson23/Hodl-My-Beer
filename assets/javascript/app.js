@@ -193,7 +193,7 @@ function pullDaily(){
                     class: "beerIMG",
                     id: testBeer.name,
                     src: beerImage,
-                    alt: "a picture of the beer"
+                    alt: `A picture of ${testBeer.name}`
                 });
                 var beerDes = $("<p>").text(testBeer.description);
                 var beerName = $("<p>").text(testBeer.name);
@@ -222,8 +222,8 @@ function sixpack() {//function when % is too high
 };
 
 function emptyDivs(){
-    $(".result").empty();
-        }
+    $(".result").remove();
+     }
    
 
 $("#search-currency").on("click", function() {
