@@ -17,8 +17,8 @@ var database = firebase.database();
 var loginRef = database.ref('/login');
 var userRef = database.ref('/users');
 
-// Create variable to reference access google authentication
-var provider =  firebase.auth.GoogleAuthProvider();
+// Create variable to access google authentication
+var provider =  new firebase.auth.GoogleAuthProvider();
 // var user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
 
@@ -36,95 +36,27 @@ loginRef.on('value', function(snapshot) {
         $('.btnLogin').removeClass('d-none');
     };
 });
+
 // Add a realtime listener
-// firebase.auth().onAuthStateChanged(firebaseUser => {
-//     if(firebaseUser) {
-//         firebaseUser.providerData.forEach(function (profile) {
-//             name = profile.displayName;
-//             email = profile.email;
-//             photoUrl = profile.photoURL;
-//             uid = profile.uid;
-//             console.log("Sign-in provider: " + profile.providerId);
-//             console.log("  Provider-specific UID: " + uid);
-//             console.log("  Name: " + name);
-//             console.log("  Email: " + email);
-//             console.log("  Photo URL: " + photoURL);
-//           });
-//         userRef.push(uid);
-//     } else {
-//         console.log('not logged in');
-//     };
-// });
-
-// //Get the firebase reference    
-//     firebase.auth().onAuthStateChanged(function(authData) {
-//         authData.providerData.forEach(function (profile) {
-//             name = profile.displayName;
-//             email = profile.email;
-//             photoUrl = profile.photoURL;
-//             uid = profile.uid;
-//         });
-//       if (authData && isNewUser) {
-//         // save the user's profile into Firebase so we can list users,
-//         // use them in Security and Firebase Rules, and show profiles
-//         userRef.child(authData.uid).set({
-//             provider: authData.provider,
-//             name: getName(authData)
-//           //some more user data
-//             });
-//         };
-//         //Get the correct firebase reference
-//         // var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com").child("users").child(authData.uid);
-//         var UserChildRef = userRef.child(authData.uid);
-//         //Get the data
-//         UserChildRef.once("value", function(data) {
-//           // do some stuff once, user data will be in the variable data
-//         });
-//     });
-
-
-// //Get the firebase reference    
-// var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
-//     ref.onAuth(function(authData) {
-//         if (authData && isNewUser) {
-//             // save the user's profile into Firebase so we can list users,
-//             // use them in Security and Firebase Rules, and show profiles
-//             ref.child("users").child(authData.uid).set({
-//                 provider: authData.provider,
-//                 name: getName(authData)
-//                 //some more user data
-//             });
-//         }
-//     });
-
-function userlogin(e) {
-    firebase.auth().onAuthStateChanged(function(user) {  
-        // onAuthStateChanged listener triggers every time the user ID token changes.  
-        // This could happen when a new user signs in or signs out.  
-        // It could also happen when the current user ID token expires and is refreshed.  
-        if (user && user.uid != currentUid) {  
-            // Update the UI when a new user signs in.  
-            // Otherwise ignore if this is a token refresh.  
-            // Update the current user UID.  
-            currentUid = user.uid;  
-            currentName = profile.displayName;
-            currentEmail = profile.email;
-            currentPhotoUrl = profile.photoURL;
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser) {
+        firebaseUser.providerData.forEach(function (profile) {
+            name = profile.displayName;
+            email = profile.email;
+            photoUrl = profile.photoURL;
+            uid = profile.uid;
             console.log("Sign-in provider: " + profile.providerId);
-            console.log("  Provider-specific UID: " + currentUid);
-            console.log("  Name: " + currentName);
-            console.log("  Email: " + currentEmail);
-            console.log("  Photo URL: " + currentPhotoURL);
-        } else {  
-         // Sign out operation. Reset the current user UID.  
-         currentUid = null;  
-         console.log("no user signed in");  
-        }
-    }).catch(function(e) {
-        console.log(e.message)
-    })
+            console.log("  Provider-specific UID: " + uid);
+            console.log("  Name: " + name);
+            console.log("  Email: " + email);
+            console.log("  Photo URL: " + photoURL);
+          });
+        userRef.push(uid);
+    } else {
+        console.log('not logged in');
+    };
+});
 
-}
 
 
 btnLogin.on('click', function(e){
