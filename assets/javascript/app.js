@@ -67,27 +67,14 @@ loginRef.on('value', function(snapshot) {
           //some more user data
             });
         };
-    });
-
-//Get the correct firebase reference
-// var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com").child("users").child(authData.uid);
-var UserChildRef = userRef.child(authData.uid);
-//Get the data
-UserChildRef.once("value", function(data) {
-  // do some stuff once, user data will be in the variable data
-});
-
-database.ref("/players").on("value", function (snapshot) {
-    let players = snapshot.val();
-    // Wait for two players to join the game
-    if (snapshot.numChildren() === 2) {
-        // Store opponent name in game object
-        let opponentKey = Object.keys(players).find(function (key) {
-            return players[key].userName !== GAME.userName
+        //Get the correct firebase reference
+        // var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com").child("users").child(authData.uid);
+        var UserChildRef = userRef.child(authData.uid);
+        //Get the data
+        UserChildRef.once("value", function(data) {
+          // do some stuff once, user data will be in the variable data
         });
-    };
-    GAME.opponentName = players[opponentKey].userName;
-});
+    });
 
 
 btnLogin.on('click', function(e){
