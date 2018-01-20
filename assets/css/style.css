@@ -31,10 +31,16 @@ footer {
     width: 90px;
     position: relative;
     overflow: auto;
-  
-.header-div{
+}
+
+.header-div {
     display: none;
 }
+
 .header-div ~ div:nth-child(-n+7) {
+    display: none;
+}
+
+.results-area{
     display: none;
 }
