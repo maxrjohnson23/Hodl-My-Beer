@@ -37,7 +37,7 @@ loginRef.on('value', function(snapshot) {
 });
 
 // Add a realtime listener
-firebase.auth.onAuthStateChanged(firebaseUser => {
+firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         firebaseUser.providerData.forEach(function (profile) {
             name = profile.displayName;
@@ -69,10 +69,10 @@ function writeUserData(userId, name, email, imageUrl) {
 btnLogin.on('click', function(e){
     e.preventDefault();
     // Create variable to access google authentication
-    var provider =  firebase.auth.GoogleAuthProvider();
+    var provider =  firebase.auth().GoogleAuthProvider();
     loginRef.set('loggedIn');
     // Sign In
-    firebase.auth.signInWithRedirect(provider).then(function(result) {
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
         console.log('Successfully signed in');
         var token = result.credential.accessToken;
         var user = result.user;
@@ -83,10 +83,10 @@ btnLogin.on('click', function(e){
 
 btnSignout.on('click', function(e){
     e.preventDefault();
-    var provider =  firebase.auth.GoogleAuthProvider();
+    var provider =  firebase.auth().GoogleAuthProvider();
     loginRef.set('loggedOut');
     // Sign Out
-    firebase.auth.signOut().then(function() {
+    firebase.auth().signOut().then(function() {
         console.log('Successfully signed out');
         $('.btnSignout').addClass('d-none');
         $('.btnLogin').removeClass('d-none');
