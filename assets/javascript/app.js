@@ -84,6 +84,8 @@ btnSignout.on('click', function(e){
         console.log('Successfully signed out');
         $('.btnSignout').addClass('d-none');
         $('.btnLogin').removeClass('d-none');
+        $('.userPhoto').empty();
+        $('.userName').empty();
     }).catch(function(e) {
         console.log(e.message)
     });
