@@ -70,3 +70,14 @@ footer {
 .result {
     font-weight: 400;
 }
+.ccc-chart{
+    width: 320px;
+}
+.daily_div{
+    margin-top: 5px;
+    display: none;
+}
+.weekly_div{
+    margin-top: 5px;
+    display: none;
+}
