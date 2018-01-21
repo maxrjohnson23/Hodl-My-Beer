@@ -28,16 +28,16 @@ var name, email, photoUrl, uid, emailVerified;
 var btnLogin = $('.btnLogin');
 var btnSignout = $('.btnSignout');
 
-loginRef.on('value', function(snapshot) {
-    console.log('loginRef firing');
-    if (snapshot.val()=='loggedIn') {
-        $('.btnSignout').removeClass('d-none');
-        $('.btnLogin').addClass('d-none');
-    } else if (snapshot.val() == 'loggedOut') {
-        $('.btnSignout').addClass('d-none');
-        $('.btnLogin').removeClass('d-none');
-    };
-});
+// loginRef.on('value', function(snapshot) {
+//     console.log('loginRef firing');
+//     if (snapshot.val()=='loggedIn') {
+//         $('.btnSignout').removeClass('d-none');
+//         $('.btnLogin').addClass('d-none');
+//     } else if (snapshot.val() == 'loggedOut') {
+//         $('.btnSignout').addClass('d-none');
+//         $('.btnLogin').removeClass('d-none');
+//     };
+// });
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
