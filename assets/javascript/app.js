@@ -144,7 +144,25 @@ var abv;
 function pullDaily(){
         $(".daily_div").css("display", "block");
         $(".weekly_div").css("display", "block");
-        abv = Math.abs(percents.day); //5.8 is a test, this will eventually be our % change from crypto
+        var change = Math.abs(percents.day);
+        if (change >= 1 && change <= 2){
+            abv = 0.5;
+        } else if (change >= 18 && change <= 20){
+            abv = 3.5;
+            sixpack(abv);
+        } else if (change > 20 && change <= 24){
+            abv = 4.5;
+            sixpack(abv);
+        } else if (change > 24 && change <= 30){
+            abv = 5.5;
+            sixpack(abv);
+        } else if (change > 30){
+            abv = 6.5;
+            sixpack(abv);
+        }  else {
+            abv = change; //5.8 is a test, this will eventually be our % change from crypto
+            
+        }
         var abvLower = Math.floor(abv); //create range for queryURL
         var abvHigher = Math.ceil(abv);
         var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
@@ -199,8 +217,27 @@ function pullDaily(){
     }
 
     function pullWeekly(){
-        
-            abv = Math.abs(percents.week); //5.8 is a test, this will eventually be our % change from crypto
+        var change = Math.abs(percents.week);
+        if (change >= 1 && change <= 2){
+            abv = 0.5;
+        } else if (change >= 18 && change <= 20){
+            abv = 3.5;
+            sixpack(abv);
+        } else if (change > 20 && change <= 24){
+            abv = 4.5;
+            sixpack(abv);
+        } else if (change > 24 && change <= 30){
+            abv = 5.5;
+            sixpack(abv);
+        } else if (change > 30){
+            abv = 6.5;
+            sixpack(abv);
+        }
+            else {
+            abv = change; //5.8 is a test, this will eventually be our % change from crypto
+            
+        }
+            // abv = Math.abs(percents.week); //5.8 is a test, this will eventually be our % change from crypto
             var abvLower = Math.floor(abv); //create range for queryURL
             var abvHigher = Math.ceil(abv);
             var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
