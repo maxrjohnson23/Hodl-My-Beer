@@ -19,27 +19,34 @@
             <a class="navbar-brand" href="#">
                 <img id="logo" src="assets/images/logo.png"/>
             </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse text-center justify-content-end">
+              
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li id="portfolio-page-link" class="nav-item">
-                        <a class="nav-link" href="portfolio.html">My Portfolio</a>
+                    <div class="thumbnail m-auto userPhoto">
+                        <!-- <img src="https://lh5.googleusercontent.com/-rLyzIwk9UsQ/AAAAAAAAAAI/AAAAAAAAAZE/qwWFspnFNlc/photo.jpg" class="nav-link rounded-circle" style="max-width: 75px"> -->
+                    </div>
+                    <li class="nav-item active m-auto">
+                        <p class="nav-link m-auto userName"></p>
+                    </li>
+                    <li id="portfolio-page-link" class="nav-item m-auto">
+                        <a class="nav-link m-auto" href="portfolio.html">My Portfolio</a>
+                    </li>
+                    <li class="nav-item m-auto">
+                        <button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in</button>
+                    </li>
+                    <li class="nav-item m-auto">
+                        <button class="btn navbar-btn text-white btn-secondary btnLogin d-none m-auto" type="submit">Sign out</button>
                     </li>
                 </ul>
-                <button class="btn navbar-btn ml-2 text-white btn-secondary btnLogin">
-                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
-                    Log in
-                </button>
-                <button class="btn navbar-btn ml-2 text-white btn-secondary btnSignout d-none">
-                    <i class="fa d-inline fa-lg fa-user-circle-o"></i>
-                    Sign out
-                </button>
+                </form>
             </div>
         </div>
     </nav>
+
     <!-- Cover -->
     <!-- Article style section -->
     <div class="py-5 text-center">
