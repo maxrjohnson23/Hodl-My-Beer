@@ -137,7 +137,8 @@ var roundingArray = []; // for use in rounding when % crypto !== any returned AB
 var abv;
 
 function pullDaily(){
-        $(".results-area").css("display", "block");
+        $(".daily_div").css("display", "block");
+        $(".weekly_div").css("display", "block");
         abv = Math.abs(percents.day); //5.8 is a test, this will eventually be our % change from crypto
         var abvLower = Math.floor(abv); //create range for queryURL
         var abvHigher = Math.ceil(abv);
