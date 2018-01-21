@@ -2,18 +2,9 @@ database.ref("/cryptoList").on("value", function (snapshot) {
     let currencyList = snapshot.val();
 
     if (currencyList) {
-        for (let i = 0; i < 25; i++) {
-            let currency = currencyList[i];
+        for (let i = 0; i < 5; i++) {
             // Create row for data table
-            dataTable.row.add([
-                `<img src="assets/images/graph.png" class="graph-icon" data-currency="${currency.symbol}" />`,
-                currency.symbol,
-                currency.name,
-                currency.percent_change_1h,
-                currency.percent_change_24h,
-                currency.percent_change_7d,
-                "<button class='btn-sm btn-danger'>Remove</button>"
-            ]).draw(false);
+            addDataRow(currencyList[i])
         }
     }
 });
@@ -54,4 +45,29 @@ $(document).on('click', '.graph-icon', function () {
     document.getElementById("currency-graph").appendChild(s);
 
 });
+
+// Add currency to portfolio on Add button
+$("#add-curr-btn").on("click", function() {
+    let currId = $(this).attr("data-curr-id");
+    console.log("Curr id " + currId);
+    pullCryptoSingleCurrency(currId, function(data) {
+            // add to datatables from API data
+            if(data){
+                addDataRow(data[0]);
+            }
+        });
+});
+
+// Add row to DataTables
+function addDataRow(currency) {
+    dataTable.row.add([
+        `<img src="assets/images/graph.png" class="graph-icon" data-currency="${currency.symbol}" />`,
+        currency.symbol,
+        currency.name,
+        currency.percent_change_1h,
+        currency.percent_change_24h,
+        currency.percent_change_7d,
+        "<button class='btn-sm btn-danger'>Remove</button>"
+    ]).draw(false);
+}
 
