@@ -258,7 +258,6 @@ function emptyDivs(){
     $(".result").remove();
      }
    
-
 $("#search-currency").on("click", function() {
     // Get value from data attribute
     emptyDivs();
@@ -269,7 +268,7 @@ $("#search-currency").on("click", function() {
 
     widget(cryptoSym);
     cryptoHeader(currId);
-
+    
     if(currId) {
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
     }
@@ -291,13 +290,13 @@ function setCurrencyStatsOnUI(data) {
     percents.day = percentDay;
     percents.week = percentWeek;
     
-    pullDaily();
 
     $(".percentDaily").html(" ");
     $(".percentWeekly").html(" ");
 
     $(".daily_percentage").append('<div class="percentDaily">'+percentDay+'%<div>');
     $(".weekly_percentage").append('<div class="percentWeekly">'+percentWeek+'%<div>');
+    pullDaily();    
 }
 
 
