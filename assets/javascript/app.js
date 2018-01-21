@@ -17,8 +17,8 @@ if (!firebase.apps.length) {
 }
 // Create a variable to reference the database.
 var database = firebase.database();
-var loginRef = database.ref('/login');
 var userRef = database.ref('/users');
+var currentUserRef = database.ref('/currentUser');
 
 
 // var user = firebase.auth().currentUser;
@@ -55,6 +55,11 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             console.log("  Photo URL: " + photoURL);
           });
         writeUserData(uid, name, email, photoURL);
+        currentUserRef.set({
+            username: name,
+            email: email,
+            profile_picture : photoURL
+        })
     } else {
         console.log('not logged in');
     };
@@ -72,6 +77,8 @@ function writeUserData(userId, name, email, imageUrl) {
 btnLogin.on('click', function(e){
     e.preventDefault();
     // Create variable to access google authentication
+    $('.btnSignout').removeClass('d-none');
+    $('.btnLogin').addClass('d-none');
     var provider =  new firebase.auth.GoogleAuthProvider();
     loginRef.set('loggedIn');
     // Sign In
@@ -86,6 +93,8 @@ btnLogin.on('click', function(e){
 
 btnSignout.on('click', function(e){
     e.preventDefault();
+    $('.btnSignout').addClass('d-none');
+    $('.btnLogin').removeClass('d-none');
     var provider =  new firebase.auth.GoogleAuthProvider();
     loginRef.set('loggedOut');
     // Sign Out
