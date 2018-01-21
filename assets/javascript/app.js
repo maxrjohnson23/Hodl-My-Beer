@@ -63,14 +63,14 @@ function writeUserData(userId, name, email, imageUrl) {
 btnLogin.on('click', function(e){
     e.preventDefault();
     // Create variable to access google authentication
-    $('.btnSignout').removeClass('d-none');
-    $('.btnLogin').addClass('d-none');
     var provider =  new firebase.auth.GoogleAuthProvider();
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         console.log('Successfully signed in');
         var token = result.credential.accessToken;
         var user = result.user;
+        $('.btnSignout').removeClass('d-none');
+        $('.btnLogin').addClass('d-none');
     }).catch(function(e) {
         console.log(e.message)
     });
@@ -78,8 +78,6 @@ btnLogin.on('click', function(e){
 
 btnSignout.on('click', function(e){
     e.preventDefault();
-    $('.btnSignout').addClass('d-none');
-    $('.btnLogin').removeClass('d-none');
     var provider =  new firebase.auth.GoogleAuthProvider();
     // Sign Out
     firebase.auth().signOut().then(function() {
