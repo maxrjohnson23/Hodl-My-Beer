@@ -18,7 +18,7 @@ if (!firebase.apps.length) {
 // Create a variable to reference the database.
 var database = firebase.database();
 var userRef = database.ref('/users');
-var currentUserRef = database.ref('/currentUser');
+
 
 
 // var user = firebase.auth().currentUser;
@@ -27,17 +27,6 @@ var name, email, photoUrl, uid, emailVerified;
 // USER AUTHENTICATION
 var btnLogin = $('.btnLogin');
 var btnSignout = $('.btnSignout');
-
-// loginRef.on('value', function(snapshot) {
-//     console.log('loginRef firing');
-//     if (snapshot.val()=='loggedIn') {
-//         $('.btnSignout').removeClass('d-none');
-//         $('.btnLogin').addClass('d-none');
-//     } else if (snapshot.val() == 'loggedOut') {
-//         $('.btnSignout').addClass('d-none');
-//         $('.btnLogin').removeClass('d-none');
-//     };
-// });
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -55,11 +44,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             console.log("  Photo URL: " + photoURL);
           });
         writeUserData(uid, name, email, photoURL);
-        currentUserRef.set({
-            username: name,
-            email: email,
-            profile_picture : photoURL
-        })
+        $('.userPhoto').html(`<img src="${photoURL}" class="nav-link rounded-circle" style="max-width: 75px">`);
+        $('.userName').text(name);
     } else {
         console.log('not logged in');
     };
