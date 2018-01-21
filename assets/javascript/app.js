@@ -69,12 +69,14 @@ btnLogin.on('click', function(e){
         console.log('Successfully signed in');
         var token = result.credential.accessToken;
         var user = result.user;
-        $('.btnSignout').removeClass('d-none');
-        $('.btnLogin').addClass('d-none');
+        sessionStorage.setItem('Login','.addClass("d-none")');
+        sessionStorage.setItem('Signout','.removeClass("d-none")');
     }).catch(function(e) {
         console.log(e.message)
     });
 });
+
+
 
 btnSignout.on('click', function(e){
     e.preventDefault();
@@ -82,8 +84,7 @@ btnSignout.on('click', function(e){
     // Sign Out
     firebase.auth().signOut().then(function() {
         console.log('Successfully signed out');
-        $('.btnSignout').addClass('d-none');
-        $('.btnLogin').removeClass('d-none');
+        sessionStorage.clear();
         $('.userPhoto').empty();
         $('.userName').empty();
     }).catch(function(e) {
@@ -91,6 +92,11 @@ btnSignout.on('click', function(e){
     });
 });
 
+var getLogin = sessionStorage.getItem('Login');
+var getSignout = sessionStorage.getItem('Signout');
+
+$('.btnLogin').getLogin;
+$('.btnSignout').getSignout;
 
 // pulling crypto data
 function pullCrypto(callBack) {
