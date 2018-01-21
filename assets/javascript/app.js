@@ -80,7 +80,6 @@ btnLogin.on('click', function(e){
     $('.btnSignout').removeClass('d-none');
     $('.btnLogin').addClass('d-none');
     var provider =  new firebase.auth.GoogleAuthProvider();
-    loginRef.set('loggedIn');
     // Sign In
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         console.log('Successfully signed in');
@@ -96,7 +95,6 @@ btnSignout.on('click', function(e){
     $('.btnSignout').addClass('d-none');
     $('.btnLogin').removeClass('d-none');
     var provider =  new firebase.auth.GoogleAuthProvider();
-    loginRef.set('loggedOut');
     // Sign Out
     firebase.auth().signOut().then(function() {
         console.log('Successfully signed out');
