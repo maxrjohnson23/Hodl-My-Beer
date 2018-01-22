@@ -46,6 +46,10 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         writeUserData(uid, name, email, photoURL);
         $('.userPhoto').html(`<img src="${photoURL}" class="nav-link rounded-circle" style="max-width: 75px">`);
         $('.userName').text(name);
+        sessionStorage.setItem('Login','<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
+        sessionStorage.setItem('Signout','<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
+        $('.logincontainer').html(sessionStorage.getItem('Login'));
+        $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
     } else {
         console.log('not logged in');
     };
@@ -64,7 +68,6 @@ $('.container').on('click', 'button.btnLogin', function(e){
     e.preventDefault();
     // Create variable to access google authentication
     var provider =  new firebase.auth.GoogleAuthProvider();
-
     // Sign In
     sessionStorage.setItem('Login','<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
     sessionStorage.setItem('Signout','<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
@@ -78,7 +81,6 @@ $('.container').on('click', 'button.btnLogin', function(e){
         console.log(e.message)
     });
 });
-
 
 
 $('.container').on('click', 'button.btnSignout', function(e){
