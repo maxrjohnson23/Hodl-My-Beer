@@ -19,7 +19,7 @@ const dataTable = $('#portfolio-table').DataTable({
 });
 
 // Remove functionality for rows in the table
-$('#portfolio-table tbody').on('click', 'button.btn-danger', function () {
+$('#portfolio-table').find('tbody').on('click', 'button.btn-danger', function () {
     // Delete from datatable
     dataTable.row($(this).parents('tr')).remove().draw();
     // TODO delete from firebase
