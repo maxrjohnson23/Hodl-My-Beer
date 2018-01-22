@@ -16,6 +16,14 @@ body {
     /* background-size:cover; */
 }
 
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: -100;
+    min-width: 100%; 
+    min-height: 100%;
+}
+
 /* Classes for easyautocomplete */
 .eac-square input {
     background: url("../images/icon_search.png") no-repeat right 10px center;
