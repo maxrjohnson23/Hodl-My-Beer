@@ -19,14 +19,14 @@ if (!firebase.apps.length) {
 var database = firebase.database();
 var userRef = database.ref('/users');
 
+var getLogin = sessionStorage.getItem('Login');
+var getSignout = sessionStorage.getItem('Signout');
 
 
 // var user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
 
 // USER AUTHENTICATION
-var btnLogin = $('.btnLogin');
-var btnSignout = $('.btnSignout');
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -60,17 +60,20 @@ function writeUserData(userId, name, email, imageUrl) {
 };
 
 
-btnLogin.on('click', function(e){
+$('.container').on('click', 'button.btnLogin', function(e){
     e.preventDefault();
     // Create variable to access google authentication
     var provider =  new firebase.auth.GoogleAuthProvider();
+
     // Sign In
+    sessionStorage.setItem('Login','<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
+    sessionStorage.setItem('Signout','<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
+    $('.logincontainer').html(sessionStorage.getItem('Login'));
+    $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
     firebase.auth().signInWithRedirect(provider).then(function(result) {
         console.log('Successfully signed in');
         var token = result.credential.accessToken;
         var user = result.user;
-        sessionStorage.setItem('Login','.addClass("d-none")');
-        sessionStorage.setItem('Signout','.removeClass("d-none")');
     }).catch(function(e) {
         console.log(e.message)
     });
@@ -78,10 +81,14 @@ btnLogin.on('click', function(e){
 
 
 
-btnSignout.on('click', function(e){
+$('.container').on('click', 'button.btnSignout', function(e){
     e.preventDefault();
     var provider =  new firebase.auth.GoogleAuthProvider();
     // Sign Out
+    sessionStorage.setItem('Login','<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in</button>');
+    sessionStorage.setItem('Signout','<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto d-none" type="submit">Sign out</button>');
+    $('.logincontainer').html(sessionStorage.getItem('Login'));
+    $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
     firebase.auth().signOut().then(function() {
         console.log('Successfully signed out');
         sessionStorage.clear();
@@ -92,11 +99,7 @@ btnSignout.on('click', function(e){
     });
 });
 
-var getLogin = sessionStorage.getItem('Login');
-var getSignout = sessionStorage.getItem('Signout');
 
-$('.btnLogin').getLogin;
-$('.btnSignout').getSignout;
 
 // pulling crypto data
 function pullCrypto(callBack) {
