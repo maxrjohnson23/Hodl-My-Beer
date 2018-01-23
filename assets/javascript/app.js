@@ -30,7 +30,7 @@ var name, email, photoUrl, uid, emailVerified;
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser) {
+    if (firebaseUser) {
         firebaseUser.providerData.forEach(function (profile) {
             name = profile.displayName;
             email = profile.email;
@@ -42,12 +42,12 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             console.log("  Name: " + name);
             console.log("  Email: " + email);
             console.log("  Photo URL: " + photoURL);
-          });
+        });
         writeUserData(uid, name, email, photoURL);
         $('.userPhoto').html(`<img src="${photoURL}" class="nav-link rounded-circle" style="max-width: 75px">`);
         $('.userName').text(name);
-        sessionStorage.setItem('Login','<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
-        sessionStorage.setItem('Signout','<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
+        sessionStorage.setItem('Login', '<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
+        sessionStorage.setItem('Signout', '<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
         $('.logincontainer').html(sessionStorage.getItem('Login'));
         $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
     } else {
@@ -59,44 +59,44 @@ function writeUserData(userId, name, email, imageUrl) {
     firebase.database().ref('users/' + userId).set({
         username: name,
         email: email,
-        profile_picture : imageUrl
+        profile_picture: imageUrl
     });
 };
 
 
-$('.container').on('click', 'button.btnLogin', function(e){
+$('.container').on('click', 'button.btnLogin', function (e) {
     e.preventDefault();
     // Create variable to access google authentication
-    var provider =  new firebase.auth.GoogleAuthProvider();
+    var provider = new firebase.auth.GoogleAuthProvider();
     // Sign In
-    sessionStorage.setItem('Login','<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
-    sessionStorage.setItem('Signout','<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
+    sessionStorage.setItem('Login', '<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
+    sessionStorage.setItem('Signout', '<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
     $('.logincontainer').html(sessionStorage.getItem('Login'));
     $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
-    firebase.auth().signInWithRedirect(provider).then(function(result) {
+    firebase.auth().signInWithRedirect(provider).then(function (result) {
         console.log('Successfully signed in');
         var token = result.credential.accessToken;
         var user = result.user;
-    }).catch(function(e) {
+    }).catch(function (e) {
         console.log(e.message)
     });
 });
 
 
-$('.container').on('click', 'button.btnSignout', function(e){
+$('.container').on('click', 'button.btnSignout', function (e) {
     e.preventDefault();
-    var provider =  new firebase.auth.GoogleAuthProvider();
+    var provider = new firebase.auth.GoogleAuthProvider();
     // Sign Out
-    sessionStorage.setItem('Login','<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in</button>');
-    sessionStorage.setItem('Signout','<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto d-none" type="submit">Sign out</button>');
+    sessionStorage.setItem('Login', '<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in</button>');
+    sessionStorage.setItem('Signout', '<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto d-none" type="submit">Sign out</button>');
     $('.logincontainer').html(sessionStorage.getItem('Login'));
     $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(function () {
         console.log('Successfully signed out');
         sessionStorage.clear();
         $('.userPhoto').empty();
         $('.userName').empty();
-    }).catch(function(e) {
+    }).catch(function (e) {
         console.log(e.message)
     });
 });
@@ -136,154 +136,154 @@ var beerArray = [];//array where % for crypto matches returned ABVs
 var roundingArray = []; // for use in rounding when % crypto !== any returned ABVs
 var abv;
 
-function pullDaily(){
-        $(".daily_div").css("display", "block");
-        $(".weekly_div").css("display", "block");
-        var change = Math.abs(percents.day);
-        if (change >= 1 && change <= 2){
-            abv = 0.5;
-        } else if (change >= 18 && change <= 20){
-            abv = 3.5;
-            sixpack(abv);
-        } else if (change > 20 && change <= 24){
-            abv = 4.5;
-            sixpack(abv);
-        } else if (change > 24 && change <= 30){
-            abv = 5.5;
-            sixpack(abv);
-        } else if (change > 30){
-            abv = 6.5;
-            sixpack(abv);
-        }  else {
-            abv = change; //5.8 is a test, this will eventually be our % change from crypto
-            
-        }
-        var abvLower = Math.floor(abv); //create range for queryURL
-        var abvHigher = Math.ceil(abv);
-        var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
-        $.ajax({
+function pullDaily() {
+    $(".daily_div").css("display", "block");
+    $(".weekly_div").css("display", "block");
+    var change = Math.abs(percents.day);
+    if (change >= 1 && change <= 2) {
+        abv = 0.5;
+    } else if (change >= 18 && change <= 20) {
+        abv = 3.5;
+        sixpack(abv);
+    } else if (change > 20 && change <= 24) {
+        abv = 4.5;
+        sixpack(abv);
+    } else if (change > 24 && change <= 30) {
+        abv = 5.5;
+        sixpack(abv);
+    } else if (change > 30) {
+        abv = 6.5;
+        sixpack(abv);
+    } else {
+        abv = change; //5.8 is a test, this will eventually be our % change from crypto
+
+    }
+    var abvLower = Math.floor(abv); //create range for queryURL
+    var abvHigher = Math.ceil(abv);
+    var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
+    $.ajax({
         url: queryURL,
         method: "GET"
-        }).done(function(beerResponse) {
-            console.log(beerResponse);
-            for (let i = 0; i < beerResponse.length; i++){
-                var returnABV = beerResponse[i].abv;
-                filterResult.push(returnABV); //collecting all returned ABVs
-                if (returnABV === abv) { //where returned ABV matches % from crypto
-                    beerArray.push(i);  //add to beerArray
-                }
+    }).done(function (beerResponse) {
+        console.log(beerResponse);
+        for (let i = 0; i < beerResponse.length; i++) {
+            var returnABV = beerResponse[i].abv;
+            filterResult.push(returnABV); //collecting all returned ABVs
+            if (returnABV === abv) { //where returned ABV matches % from crypto
+                beerArray.push(i);  //add to beerArray
             }
-            console.log(filterResult);
-            console.log(beerArray);
-            for (j = 0; j < beerArray.length; j++) {
-                console.log(beerResponse[j]); // print results for matching beers
-            }
-            var testBeer = beerResponse[0];
-            console.log(testBeer);
-            var beerImage = testBeer.image_url;
-            console.log(beerImage);
-            var nameRow = $("<div class='row dNameRow result'>");
-            var imageRow = $("<div class='row dImageRow result'>");
-            var desRow = $("<div class='row dDesRow result'>");
-            var nameDiv = $("<div class='dailyNameDiv mx-auto'>");
-            var imageDiv = $("<div class='dailyImageDiv mx-auto'>");
-            var desDiv = $("<div class='dailyDesDiv'>");
-            var printABV = testBeer.abv;            
-            var popImage = $("<img>", {
-                class: "beerIMG",
-                id: testBeer.name,
-                src: beerImage,
-                alt: "a picture of the beer"
-            });
-            var beerDes = $("<p>").text(testBeer.description);
-            var beerName = $("<p>").text(testBeer.name);
-                $(".daily_beer").append(nameRow);                
-                $(".daily_beer_photo").append(imageRow);
-                $(".daily_beer_description").append(desRow);
-                $(".dNameRow").append(nameDiv);
-                $(".dImageRow").append(imageDiv);
-                $(".dDesRow").append(desDiv);
-                $(".dailyNameDiv").append("Name: " + testBeer.name + "<br>");
-                $(".dailyImageDiv").append(popImage);
-                $(".dailyDesDiv").append(beerDes);
-                $(".dailyNameDiv").append("ABV: " + printABV);
-                pullWeekly();
+        }
+        console.log(filterResult);
+        console.log(beerArray);
+        for (j = 0; j < beerArray.length; j++) {
+            console.log(beerResponse[j]); // print results for matching beers
+        }
+        var testBeer = beerResponse[0];
+        console.log(testBeer);
+        var beerImage = testBeer.image_url;
+        console.log(beerImage);
+        var nameRow = $("<div class='row dNameRow result'>");
+        var imageRow = $("<div class='row dImageRow result'>");
+        var desRow = $("<div class='row dDesRow result'>");
+        var nameDiv = $("<div class='dailyNameDiv mx-auto'>");
+        var imageDiv = $("<div class='dailyImageDiv mx-auto'>");
+        var desDiv = $("<div class='dailyDesDiv'>");
+        var printABV = testBeer.abv;
+        var popImage = $("<img>", {
+            class: "beerIMG",
+            id: testBeer.name,
+            src: beerImage,
+            alt: "a picture of the beer"
         });
-    }
+        var beerDes = $("<p>").text(testBeer.description);
+        var beerName = $("<p>").text(testBeer.name);
+        $(".daily_beer").append(nameRow);
+        $(".daily_beer_photo").append(imageRow);
+        $(".daily_beer_description").append(desRow);
+        $(".dNameRow").append(nameDiv);
+        $(".dImageRow").append(imageDiv);
+        $(".dDesRow").append(desDiv);
+        $(".dailyNameDiv").append("Name: " + testBeer.name + "<br>");
+        $(".dailyImageDiv").append(popImage);
+        $(".dailyDesDiv").append(beerDes);
+        $(".dailyNameDiv").append("ABV: " + printABV);
+        pullWeekly();
+    });
+}
 
-    function pullWeekly(){
-        var change = Math.abs(percents.week);
-        if (change >= 1 && change <= 2){
-            abv = 0.5;
-        } else if (change >= 18 && change <= 20){
-            abv = 3.5;
-            sixpack(abv);
-        } else if (change > 20 && change <= 24){
-            abv = 4.5;
-            sixpack(abv);
-        } else if (change > 24 && change <= 30){
-            abv = 5.5;
-            sixpack(abv);
-        } else if (change > 30){
-            abv = 6.5;
-            sixpack(abv);
+function pullWeekly() {
+    var change = Math.abs(percents.week);
+    if (change >= 1 && change <= 2) {
+        abv = 0.5;
+    } else if (change >= 18 && change <= 20) {
+        abv = 3.5;
+        sixpack(abv);
+    } else if (change > 20 && change <= 24) {
+        abv = 4.5;
+        sixpack(abv);
+    } else if (change > 24 && change <= 30) {
+        abv = 5.5;
+        sixpack(abv);
+    } else if (change > 30) {
+        abv = 6.5;
+        sixpack(abv);
+    }
+    else {
+        abv = change; //5.8 is a test, this will eventually be our % change from crypto
+
+    }
+    // abv = Math.abs(percents.week); //5.8 is a test, this will eventually be our % change from crypto
+    var abvLower = Math.floor(abv); //create range for queryURL
+    var abvHigher = Math.ceil(abv);
+    var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function (beerResponse) {
+        console.log(beerResponse);
+        for (let i = 0; i < beerResponse.length; i++) {
+            var returnABV = beerResponse[i].abv;
+            filterResult.push(returnABV); //collecting all returned ABVs
+            if (returnABV === abv) { //where returned ABV matches % from crypto
+                beerArray.push(i);  //add to beerArray
+            }
         }
-            else {
-            abv = change; //5.8 is a test, this will eventually be our % change from crypto
-            
+        console.log(filterResult);
+        console.log(beerArray);
+        for (j = 0; j < beerArray.length; j++) {
+            console.log(beerResponse[j]); // print results for matching beers
         }
-            // abv = Math.abs(percents.week); //5.8 is a test, this will eventually be our % change from crypto
-            var abvLower = Math.floor(abv); //create range for queryURL
-            var abvHigher = Math.ceil(abv);
-            var queryURL = "https://api.punkapi.com/v2/beers?abv_gt=" + abvLower + "&abv_lt=" + abvHigher;
-            $.ajax({
-            url: queryURL,
-            method: "GET"
-            }).done(function(beerResponse) {
-                console.log(beerResponse);
-                for (let i = 0; i < beerResponse.length; i++){
-                    var returnABV = beerResponse[i].abv;
-                    filterResult.push(returnABV); //collecting all returned ABVs
-                    if (returnABV === abv) { //where returned ABV matches % from crypto
-                        beerArray.push(i);  //add to beerArray
-                    }
-                }
-                console.log(filterResult);
-                console.log(beerArray);
-                for (j = 0; j < beerArray.length; j++) {
-                    console.log(beerResponse[j]); // print results for matching beers
-                }
-                var testBeer = beerResponse[0];
-                console.log(testBeer);
-                var beerImage = testBeer.image_url;
-                console.log(beerImage);
-                var nameRow = $("<div class='row wNameRow result'>");
-                var imageRow = $("<div class='row wImageRow result'>");
-                var desRow = $("<div class='row wDesRow result'>");
-                var nameDiv = $("<div class='weeklyNameDiv mx-auto'>");
-                var imageDiv = $("<div class='weeklyImageDiv mx-auto'>");
-                var desDiv = $("<div class='weeklyDesDiv'>");
-                var printABV = testBeer.abv;            
-                var popImage = $("<img>", {
-                    class: "beerIMG",
-                    id: testBeer.name,
-                    src: beerImage,
-                    alt: `A picture of ${testBeer.name}`
-                });
-                var beerDes = $("<p>").text(testBeer.description);
-                var beerName = $("<p>").text(testBeer.name);
-                    $(".weekly_beer").append(nameRow);                
-                    $(".weekly_beer_photo").append(imageRow);
-                    $(".weekly_beer_description").append(desRow);
-                    $(".wNameRow").append(nameDiv);
-                    $(".wImageRow").append(imageDiv);
-                    $(".wDesRow").append(desDiv);
-                    $(".weeklyNameDiv").append("Name: " + testBeer.name + "<br>");
-                    $(".weeklyImageDiv").append(popImage);
-                    $(".weeklyDesDiv").append(beerDes);
-                    $(".weeklyNameDiv").append("ABV: " + printABV);    
-            });
-        }
+        var testBeer = beerResponse[0];
+        console.log(testBeer);
+        var beerImage = testBeer.image_url;
+        console.log(beerImage);
+        var nameRow = $("<div class='row wNameRow result'>");
+        var imageRow = $("<div class='row wImageRow result'>");
+        var desRow = $("<div class='row wDesRow result'>");
+        var nameDiv = $("<div class='weeklyNameDiv mx-auto'>");
+        var imageDiv = $("<div class='weeklyImageDiv mx-auto'>");
+        var desDiv = $("<div class='weeklyDesDiv'>");
+        var printABV = testBeer.abv;
+        var popImage = $("<img>", {
+            class: "beerIMG",
+            id: testBeer.name,
+            src: beerImage,
+            alt: `A picture of ${testBeer.name}`
+        });
+        var beerDes = $("<p>").text(testBeer.description);
+        var beerName = $("<p>").text(testBeer.name);
+        $(".weekly_beer").append(nameRow);
+        $(".weekly_beer_photo").append(imageRow);
+        $(".weekly_beer_description").append(desRow);
+        $(".wNameRow").append(nameDiv);
+        $(".wImageRow").append(imageDiv);
+        $(".wDesRow").append(desDiv);
+        $(".weeklyNameDiv").append("Name: " + testBeer.name + "<br>");
+        $(".weeklyImageDiv").append(popImage);
+        $(".weeklyDesDiv").append(beerDes);
+        $(".weeklyNameDiv").append("ABV: " + printABV);
+    });
+}
 
 // }//close for loop
 // }//close pullBeer()
@@ -296,11 +296,11 @@ function sixpack() {//function when % is too high
     console.log("sixpack");
 };
 
-function emptyDivs(){
+function emptyDivs() {
     $(".result").remove();
-     }
-   
-$("#search-currency").on("click", function() {
+}
+
+$("#search-currency").on("click", function () {
     // Get value from data attribute
     emptyDivs();
     $("#currency-input").val("");
@@ -310,8 +310,8 @@ $("#search-currency").on("click", function() {
 
     widget(cryptoSym);
     cryptoHeader(currId);
-    
-    if(currId) {
+
+    if (currId) {
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
     }
 });
@@ -331,19 +331,19 @@ function setCurrencyStatsOnUI(data) {
     console.log("week:" + percentWeek);
     percents.day = percentDay;
     percents.week = percentWeek;
-    
+
 
     $(".percentDaily").html(" ");
     $(".percentWeekly").html(" ");
 
-    $(".daily_percentage").append('<div class="percentDaily">'+percentDay+'%<div>');
-    $(".weekly_percentage").append('<div class="percentWeekly">'+percentWeek+'%<div>');
-    pullDaily();    
+    $(".daily_percentage").append('<div class="percentDaily">' + percentDay + '%<div>');
+    $(".weekly_percentage").append('<div class="percentWeekly">' + percentWeek + '%<div>');
+    pullDaily();
 }
 
 
 
 
-    
+
 
 
