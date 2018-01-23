@@ -18,10 +18,7 @@ body {
 
 #myVideo {
     position: fixed;
-    right: 0;
-    bottom: -100;
-    min-width: 100%; 
-    min-height: 100%;
+    left:0px;
     z-index: -100;
 }
 
@@ -108,4 +105,49 @@ footer {
 
 #search-currency{
     background-color: #0058A3;
+}
+
+@media screen and (max-width: 1199px) {
+    #myVideo {
+        position: fixed;
+        max-height: 100%;
+        left:-250px;
+        top:50px;
+        z-index: -100;
+    }
+}
+@media screen and (max-width: 991px) {
+    #myVideo {
+        position: fixed;
+        left:-350px;
+        top:50px;
+        z-index: -100;
+    }
+}
+@media screen and (max-width: 768px) {
+    #myVideo {
+        position: fixed;
+        max-height: 100%;
+        left:-450px;
+        top:50px;
+        z-index: -100;
+    }
+}
+@media screen and (max-width: 574px) {
+    #myVideo {
+        position: fixed;
+        max-height: 100%;
+        left:-500px;
+        top:50px;
+        z-index: -100;
+    }
+}
+@media screen and (max-width: 453px) {
+    #myVideo {
+        position: fixed;
+        max-height: 100%;
+        left:-500px;
+        top:100px;
+        z-index: -100;
+    }
 }
