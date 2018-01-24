@@ -29,7 +29,7 @@ function configureSearchBar(currencyNames) {
     // Config for easyautocomplete plugin
     let config = {
         data: currencyNames,
-        getValue: function(element) {
+        getValue: function (element) {
             // display Name (Symbol) for all currencies in the dropdown
             return `${element.name} (${element.symbol})`;
         },
@@ -47,6 +47,9 @@ function configureSearchBar(currencyNames) {
                 $searchBtn.attr("data-curr-id", currId);
                 $searchBtn.attr("data-curr-symbol", currSymbol);
 
+            },
+            onShowListEvent: function () {
+                $("#currency-input").removeClass("is-invalid");
             }
         }, theme: "square", cssClasses: "form-control form-control-sm fix-autocomplete input-group"
 
@@ -64,7 +67,7 @@ function configurePortfolioSearchBar(currencyNames) {
     // Config for easyautocomplete plugin
     let config = {
         data: currencyNames,
-        getValue: function(element) {
+        getValue: function (element) {
             // display Name (Symbol) for all currencies in the dropdown
             return `${element.name} (${element.symbol})`;
         },
@@ -82,6 +85,9 @@ function configurePortfolioSearchBar(currencyNames) {
                 $addBtn.attr("data-curr-id", currId);
                 $addBtn.attr("data-curr-symbol", currSymbol);
 
+            },
+            onShowListEvent: function () {
+                $("#add-curr-input").removeClass("is-invalid");
             }
         }, theme: "square", cssClasses: "form-control form-control-sm fix-autocomplete input-group"
 

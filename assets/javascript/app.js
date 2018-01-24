@@ -295,16 +295,21 @@ function emptyDivs() {
 }
 
 $("#search-currency").on("click", function () {
-    // Get value from data attribute
-    emptyDivs();
-    $("#currency-input").val("");
-    let currId = $(this).attr("data-curr-id");
-    let cryptoSym = $(this).attr("data-curr-symbol");
+    var currId = $(this).attr("data-curr-id");
+    if(!currId) {
+        // invalidate field
+        $("#currency-input").addClass("is-invalid");
+    } else {
+        // Get value from data attribute
+        emptyDivs();
+        $("#currency-input").val("");
+        $("#currency-input").addClass("is-invalid");
 
-    widget(cryptoSym);
-    cryptoHeader(currId);
+        let cryptoSym = $(this).attr("data-curr-symbol");
 
-    if (currId) {
+        widget(cryptoSym);
+        cryptoHeader(currId);
+
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
     }
 });
