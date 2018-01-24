@@ -37,21 +37,18 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             photoURL = profile.photoURL;
             emailVerified = profile.emailVerified;
             uid = profile.uid;
-            console.log("Sign-in provider: " + profile.providerId);
-            console.log("  Provider-specific UID: " + uid);
-            console.log("  Name: " + name);
-            console.log("  Email: " + email);
-            console.log("  Photo URL: " + photoURL);
         });
         writeUserData(uid, name, email, photoURL);
         $('.userPhoto').html(`<img src="${photoURL}" class="nav-link rounded-circle" style="max-width: 75px">`);
         $('.userName').text(name);
         sessionStorage.setItem('Login', '<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
         sessionStorage.setItem('Signout', '<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
+        // Set user id in session for later data updates
+        sessionStorage.setItem('userId', uid);
         $('.logincontainer').html(sessionStorage.getItem('Login'));
         $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
     } else {
-        console.log('not logged in');
+        console.log('User not logged in');
     };
 });
 
@@ -110,8 +107,6 @@ function pullCrypto(callBack) {
         url: queryURL,
         method: "GET",
         success: callBack
-    }).done(function (cryptoResponse) {
-        console.log(cryptoResponse);
     });
 }
 
@@ -144,16 +139,16 @@ function pullDaily() {
         abv = 0.5;
     } else if (change >= 18 && change <= 20) {
         abv = 3.5;
-        dailySixPack(abv);
+        sixpack(abv);
     } else if (change > 20 && change <= 24) {
         abv = 4.5;
-        dailySixPack(abv);
+        sixpack(abv);
     } else if (change > 24 && change <= 30) {
         abv = 5.5;
-        dailySixPack(abv);
+        sixpack(abv);
     } else if (change > 30) {
         abv = 6.5;
-        dailySixPack(abv);
+        sixpack(abv);
     } else {
         abv = change; //5.8 is a test, this will eventually be our % change from crypto
 
@@ -172,6 +167,7 @@ function pullDaily() {
                 beerArray.push(i);  //add to beerArray
             }
         }
+
         var testBeer = beerResponse[0];
         var beerImage = testBeer.image_url;
         var nameRow = $("<div class='row dNameRow result'>");
@@ -209,16 +205,16 @@ function pullWeekly() {
         abv = 0.5;
     } else if (change >= 18 && change <= 20) {
         abv = 3.5;
-        weeklySixPack(abv);
+        sixpack(abv);
     } else if (change > 20 && change <= 24) {
         abv = 4.5;
-        weeklySixPack(abv);
+        sixpack(abv);
     } else if (change > 24 && change <= 30) {
         abv = 5.5;
-        weeklySixPack(abv);
+        sixpack(abv);
     } else if (change > 30) {
         abv = 6.5;
-        weeklySixPack(abv);
+        sixpack(abv);
     }
     else {
         abv = change; //5.8 is a test, this will eventually be our % change from crypto
@@ -240,6 +236,7 @@ function pullWeekly() {
                 beerArray.push(i);  //add to beerArray
             }
         }
+
         var testBeer = beerResponse[0];
         var beerImage = testBeer.image_url;
         var nameRow = $("<div class='row wNameRow result'>");
@@ -269,8 +266,6 @@ function pullWeekly() {
         $(".weeklyNameDiv").append("ABV: " + printABV);
     });
 }
-
-
 
 function dailySixPack() {//function when % is too high
     if (percents.day > 18) {
@@ -305,7 +300,6 @@ $("#search-currency").on("click", function () {
     $("#currency-input").val("");
     let currId = $(this).attr("data-curr-id");
     let cryptoSym = $(this).attr("data-curr-symbol");
-    console.log(cryptoSym);
 
     widget(cryptoSym);
     cryptoHeader(currId);
@@ -319,15 +313,9 @@ function setCurrencyStatsOnUI(data) {
     // format from API
     let currencyData = data[0];
 
-    let price = currencyData.price_usd;
-    let percentHour = currencyData.percent_change_1h;
     let percentDay = currencyData.percent_change_24h;
     let percentWeek = currencyData.percent_change_7d;
 
-    console.log("price: " + price);
-    console.log("hour:" + percentHour);
-    console.log("day:" + percentDay);
-    console.log("week:" + percentWeek);
     percents.day = percentDay;
     percents.week = percentWeek;
 
