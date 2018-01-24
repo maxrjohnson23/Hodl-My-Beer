@@ -1,14 +1,17 @@
 html {
     position: relative;
-    min-height: 100%;
+    height: 100%;
 }
 
 #logo {
-    width: 275px;
+    width: 250px;
 }
 
 body {
-    margin-bottom: 55px; /* Margin bottom by footer height */
+    /* margin-bottom: 55px; Margin bottom by footer height */
+    position: relative;
+    min-height:100%;
+    background-color: rgb(213, 206, 208);
 
     /* potential background? */
      /* background-image: url("../images/background1.jpeg"); */ 
@@ -18,24 +21,22 @@ body {
 
 #myVideo {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
+    top: 88px;
+    left: 50vw;
     z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(polina.jpg) no-repeat;
-    background-size: cover;
+    transform: translateX(-50%);
+    min-height: 100vh;
+    min-width: 100vw;
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 #search-div, #portfolio-search, #portfolio-div, .daily_div, .weekly_div {
     border-radius: 15px !important;
-    border: 3px solid #bcbebf !important;
-
+    /* border: 3px solid #bcbebf !important; */
 }
-
 
 /* Classes for easyautocomplete */
 .eac-square input {
@@ -59,6 +60,8 @@ body {
 footer {
     position: absolute;
     bottom: 0;
+    right:0;
+    left:0;
     width: 100%;
     height: 55px;
     line-height: 50px; /* Vertically center the text there */
@@ -123,15 +126,18 @@ footer {
     background-color: #0058A3;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 575px) {
     #myVideo {
-        clear: both;
-        /* position: fixed;
-        left:0px;
-        z-index: -100; */
-        min-width: 1100px;
         position: fixed;
-        transition: none;
-        /* background-size: cover; */
+        top: 69.75px;
+        left: 50vw;
+        z-index: -100;
+        transform: translateX(-50%);
+        min-height: 100vh;
+        min-width: 100vw;
+        -ms-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
     }
 }

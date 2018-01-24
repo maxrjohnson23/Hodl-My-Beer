@@ -18,7 +18,7 @@
         Your browser does not support HTML5 video.
     </video>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md bg-primary navbar-dark">
+    <nav class="navbar navbar-expand-sm fixed-top bg-primary navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img id="logo" src="assets/images/logo.png"/>
@@ -56,26 +56,22 @@
     <!-- Cover -->
     <!-- Article style section -->
     <div class="py-5 text-center">
-        <div class="container">
-            <div class="row">
-                <div id="search-div"class="col-md-6 offset-md-3 my-4 p-3 bg-white box-shadow">
-                        <h1 class="display-4 mb-4 text-primary">Search Currency</h1>
-                        <div class="input-group mb-3">
-                            <input id="currency-input" type="text" class="auto-complete form-control"
-                                   placeholder="Currency Name"
-                                   aria-label="Currency Name" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button id="search-currency" class="btn btn-primary" data-currency="" type="button">
-                                    Search
-                                </button>
-                            </div>
+        <div class="container py-5">
+            <div class="row py-5 my-5">
+                <div id="search-div"class="col-md-6 offset-md-3 text-center">
+                    <h1 class="display-4 mb-4 text-primary">Search Currency</h1>
+                    <div class="input-group mb-3">
+                        <input id="currency-input" type="text" class="auto-complete form-control"
+                                placeholder="Currency Name"
+                                aria-label="Currency Name" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button id="search-currency" class="btn btn-primary" data-currency="" type="button">
+                                Search
+                            </button>
                         </div>
-                        <div class="currentPrice"></div>
-
                     </div>
-
-
-
+                    <div class="currentPrice bg-white"></div>
+                </div>
             </div>
 
             <div class="row">
