@@ -294,20 +294,22 @@ function emptyDivs() {
     $(".result").remove();
 }
 
+// Click event for Search button
 $("#search-currency").on("click", function () {
-    var currId = $(this).attr("data-curr-id");
-    if(!currId) {
+    var symbol = $(this).attr("data-curr-symbol");
+    var userSelection = $("#currency-input").val();
+    if(!symbol || userSelection.indexOf(symbol) < 0) {
         // invalidate field
         $("#currency-input").addClass("is-invalid");
     } else {
         // Get value from data attribute
         emptyDivs();
         $("#currency-input").val("");
-        $("#currency-input").addClass("is-invalid");
+        $("#currency-input").removeClass("is-invalid");
 
-        let cryptoSym = $(this).attr("data-curr-symbol");
+        var currId = $(this).attr("data-curr-id");
 
-        widget(cryptoSym);
+        widget(symbol);
         cryptoHeader(currId);
 
         pullCryptoSingleCurrency(currId, setCurrencyStatsOnUI);
