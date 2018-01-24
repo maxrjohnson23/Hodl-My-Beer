@@ -160,7 +160,6 @@ function pullDaily() {
         url: queryURL,
         method: "GET"
     }).done(function (beerResponse) {
-        console.log(beerResponse);
         for (let i = 0; i < beerResponse.length; i++) {
             var returnABV = beerResponse[i].abv;
             filterResult.push(returnABV); //collecting all returned ABVs
@@ -229,6 +228,7 @@ function pullWeekly() {
         url: queryURL,
         method: "GET"
     }).done(function (beerResponse) {
+
         for (let i = 0; i < beerResponse.length; i++) {
             var returnABV = beerResponse[i].abv;
             filterResult.push(returnABV); //collecting all returned ABVs
@@ -267,31 +267,31 @@ function pullWeekly() {
     });
 }
 
-
 function dailySixPack() {//function when % is too high
     if (percents.day > 18) {
-        var sixer = $("<h4>").text("Congrats, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Congrats, you've earned a six pack!");
         $(".daily_div").prepend(sixer);
 
     } else if (percents.day < -18) {
-        var sixer = $("<h4>").text("Sorry, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Sorry, you've earned a six pack!");
         $(".daily_div").prepend(sixer);
     }
 };
 
 function weeklySixPack() {//function when % is too high
     if (percents.week > 18) {
-        var sixer = $("<h4>").text("Congrats, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Congrats, you've earned a six pack!");
         $(".weekly_div").prepend(sixer);
 
     } else if (percents.week < -18) {
-        var sixer = $("<h4>").text("Sorry, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Sorry, you've earned a six pack!");
         $(".weekly_div").prepend(sixer);
     }
 };
 
 function emptyDivs() {
     $(".result").remove();
+    $(".sixer").remove();
 }
 
 $("#search-currency").on("click", function () {
