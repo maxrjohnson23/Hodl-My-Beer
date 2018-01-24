@@ -22,6 +22,13 @@ body {
     z-index: -100;
 }
 
+#search-div, #portfolio-search, #portfolio-div, .daily_div, .weekly_div {
+    border-radius: 15px !important;
+    border: 3px solid #bcbebf !important;
+
+}
+
+
 /* Classes for easyautocomplete */
 .eac-square input {
     background: url("../images/icon_search.png") no-repeat right 10px center;
@@ -86,6 +93,7 @@ footer {
 .weekly_div{
     margin-top: 5px;
     display: none;
+
 }
 
 .currentPrice:first-child, .daily_div, .weekly_div { 
@@ -95,7 +103,7 @@ footer {
   color: rgb(0, 0, 0);
   padding: 2rem;
   font-size: 1.2rem;
-  border-radius: 25px;
+  border-radius: 15px;
   border: none;
 }
 

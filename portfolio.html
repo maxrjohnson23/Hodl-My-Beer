@@ -24,11 +24,12 @@
             <a class="navbar-brand" href="index.html" role="link">
                 <img id="logo" src="assets/images/logo.png"/>
             </a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-                
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <div class="thumbnail m-auto userPhoto">
@@ -40,10 +41,13 @@
                         <a class="nav-link m-auto text-white" href="index.html">Main</a>
                     </li>
                     <li class="nav-item m-auto logincontainer">
-                        <button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in</button>
+                        <button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in
+                        </button>
                     </li>
                     <li class="nav-item m-auto signoutcontainer">
-                        <button class="btn navbar-btn text-white btn-secondary btnSignout d-none m-auto" type="submit">Sign out</button>
+                        <button class="btn navbar-btn text-white btn-secondary btnSignout d-none m-auto" type="submit">
+                            Sign out
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -52,84 +56,82 @@
     <!-- Cover -->
     <!-- Article style section -->
     <div class="py-5 text-center">
-        <div class="container py-5 bg-white rounded box-shadow">
+        <div class="container py-5">
             <div class="row mb-3">
-                <div class="col-md-6 offset-md-3">
+                <div id="portfolio-search" class="col-md-6 offset-md-3 bg-white box-shadow pt-2">
                     <h1 class="display-4 mb-4 text-primary">My Portfolio</h1>
 
-                </div>
-            </div>
 
-            <div class="row mb1">
-                <div class="col-md-6 offset-md-3">
                     <div class="input-group mb-3">
                         <input id="add-curr-input" type="text" class="form-control" placeholder="Currency Name"
                                aria-label="Currency Name">
                         <div class="input-group-append">
-                            <button id="add-curr-btn" class="btn btn-success" data-currency="" type="button">Add</button>
+                            <button id="add-curr-btn" class="btn btn-success" data-currency="" type="button">Add
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div id="portfolio-div" class="col-md-12 bg-white rounded box-shadow p-3">
 
-            <table id="portfolio-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th class="no-sort"></th>
-                    <th>Symbol</th>
-                    <th>Name</th>
-                    <th>Hour %</th>
-                    <th>Day %</th>
-                    <th>Week %</th>
-                    <th>Remove</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-
+                    <table id="portfolio-table" class="table table-striped table-bordered mb-5" cellspacing="0"
+                           width="100%">
+                        <thead>
+                        <tr>
+                            <th class="no-sort"></th>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Hour %</th>
+                            <th>Day %</th>
+                            <th>Week %</th>
+                            <th>Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="currency-graph" class="container mt-5">
+                        <!-- Anchor for dynamically loaded graph widgets-->
+                        <script></script>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="currency-graph" class="container mb-5">
-            <!-- Anchor for dynamically loaded graph widgets-->
-            <script></script>
-
-        </div>
-    </div>
 
 
-    <!-- Footer -->
-    <footer class="bg-dark" id="footer">
-        <div class="container">
-            <span class="text-muted">© Copyright 2018</span>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer class="bg-dark" id="footer">
+            <div class="container">
+                <span class="text-muted">© Copyright 2018</span>
+            </div>
+        </footer>
 
-    <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-    <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    <!-- popper.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <!-- bootstrap.js -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-            crossorigin="anonymous"></script>
-    <!-- DataTables-->
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+        <!-- firebase -->
+        <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <!-- popper.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <!-- bootstrap.js -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+                integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+                crossorigin="anonymous"></script>
+        <!-- DataTables-->
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
-    <!--jQuery easyautocomplete plugin-->
-    <script src="assets/javascript/jquery.easy-autocomplete.min.js"></script>
+        <!--jQuery easyautocomplete plugin-->
+        <script src="assets/javascript/jquery.easy-autocomplete.min.js"></script>
 
-    <!-- custom JS files -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <script type="text/javascript" src="assets/javascript/autocomplete.js"></script>
-    <script type="text/javascript" src="assets/javascript/portfolio.js"></script>
+        <!-- custom JS files -->
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <script type="text/javascript" src="assets/javascript/autocomplete.js"></script>
+        <script type="text/javascript" src="assets/javascript/portfolio.js"></script>
 
 </body>
 

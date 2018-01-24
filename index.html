@@ -23,11 +23,12 @@
             <a class="navbar-brand" href="index.html">
                 <img id="logo" src="assets/images/logo.png"/>
             </a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-              
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <div class="thumbnail m-auto userPhoto">
@@ -39,10 +40,13 @@
                         <a class="nav-link m-auto text-white" href="portfolio.html">My Portfolio</a>
                     </li>
                     <li class="nav-item m-auto logincontainer">
-                        <button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in</button>
+                        <button class="btn navbar-btn text-white btn-secondary btnLogin m-auto" type="submit">Log in
+                        </button>
                     </li>
                     <li class="nav-item m-auto signoutcontainer">
-                        <button class="btn navbar-btn text-white btn-secondary btnSignout d-none m-auto" type="submit">Sign out</button>
+                        <button class="btn navbar-btn text-white btn-secondary btnSignout d-none m-auto" type="submit">
+                            Sign out
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -52,76 +56,78 @@
     <!-- Cover -->
     <!-- Article style section -->
     <div class="py-5 text-center">
-        <div class="container my-5 py-3 bg-white rounded box-shadow">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <h1 class="display-4 mb-4 text-primary">Search Currency</h1>
-                    <div class="input-group mb-3">
-                        <input id="currency-input" type="text" class="auto-complete form-control" placeholder="Currency Name"
-                               aria-label="Currency Name" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button id="search-currency" class="btn btn-primary" data-currency="" type="button">Search</button>
+                <div id="search-div"class="col-md-6 offset-md-3 my-4 p-3 bg-white box-shadow">
+                        <h1 class="display-4 mb-4 text-primary">Search Currency</h1>
+                        <div class="input-group mb-3">
+                            <input id="currency-input" type="text" class="auto-complete form-control"
+                                   placeholder="Currency Name"
+                                   aria-label="Currency Name" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button id="search-currency" class="btn btn-primary" data-currency="" type="button">
+                                    Search
+                                </button>
+                            </div>
                         </div>
+                        <div class="currentPrice"></div>
+
                     </div>
-                </div>
+
+
+
             </div>
 
             <div class="row">
-                <div class = "col-md-6 offset-md-3">
-                    <div class="currentPrice"></div>
-                </div>
-            </div>
-        
-            <div class="row">
-                <div class = "col-sm-5 border daily_div">
-                    Daily
-                    <div class = "row">
-                        <div class = "col-sm-9">
-                            <div class = "row">
-                                <div class = "col-sm-3 border daily_percentage">Change (24h)</div>
-                                <div class = "col-sm-9 border daily_graph">
+                <div class="col-md border-5 daily_div">
+                    <h3>Daily</h3>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-3 border daily_percentage">Change (24h)</div>
+                                <div class="col-sm-9 border daily_graph">
                                     <div class="row">
                                         <div class="col-sm-12 daily_graph_img"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class = "row">
+                            <div class="row">
                                 <div class="col-sm-12 border daily_beer_description"></div>
                             </div>
                         </div>
-                        <div class = "col-sm-3">
-                            <div class = "row">
-                                <div class = "col-sm-12 border daily_beer"></div>
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <div class="col-sm-12 border daily_beer"></div>
                             </div>
-                            <div class = "row">
-                                <div class = "col-sm-12 border daily_beer_photo"></div>
+                            <div class="row">
+                                <div class="col-sm-12 border daily_beer_photo"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class = "col-sm-2"></div>
-                <div class = "col-sm-5 border weekly_div">
-                    Weekly
-                    <div class = "row">
-                        <div class = "col-sm-9">
-                            <div class = "row">
-                                <div class = "col-sm-3 border weekly_percentage">Change (1W)</div>
-                                <div class = "col-sm-9 border weekly_graph">
+                <div class="col-md-1"></div>
+                <div class="col-md border-5 weekly_div">
+                    <h3>Weekly</h3>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-3 border weekly_percentage">Change (1W)</div>
+                                <div class="col-sm-9 border weekly_graph">
                                     <div class="row">
                                         <div class="col-sm-12 weekly_graph_img"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class = "row">
+                            <div class="row">
                                 <div class="col-sm-12 border weekly_beer_description"></div>
                             </div>
                         </div>
-                        <div class = "col-sm-3">
-                            <div class = "row">
-                                <div class = "col-sm-12 border weekly_beer"></div>
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <div class="col-sm-12 border weekly_beer"></div>
                             </div>
-                            <div class = "row">
-                                <div class = "col-sm-12 border weekly_beer_photo"></div>
+                            <div class="row">
+                                <div class="col-sm-12 border weekly_beer_photo"></div>
                             </div>
                         </div>
                     </div>
@@ -129,54 +135,7 @@
 
             </div>
 
-            <div class="results-area">
-                <div class="row daily mt-5">
-                    <div class="col-sm-2 border">
-                        Daily
-                    </div>
-                    <div class="col-sm-2 border daily_percentage">
-                        Daily %
-                    </div>
-                    <!--<div class="col-sm-2 border daily_graph">
-                        Graph
-                        <div class="row">
-                            <div class="col-sm-12 daily_graph_img"></div>
-                        </div>
-                    </div>-->
-                    <div class="col-sm-2 border daily_beer">
-                        Beer
-                    </div>
-                    <div class="col-sm-2 border daily_beer_photo">
-                        Beer Photo
-                    </div>
-                    <div class="col-sm-2 border daily_beer_description">
-                        Beer Description
-                    </div>
-                </div>
-                <div class="row weekly mt-5">
-                    <div class="col-sm-2 border">
-                        Weekly
-                    </div>
-                    <div class="col-sm-2 border weekly_percentage">
-                        Weekly %
-                    </div>
-                    <!--<div class="col-sm-2 border weekly_graph">
-                        Graph
-                        <div class="row">
-                            <div class="col-sm-12 weekly_graph_img"></div>
-                        </div>
-                    </div>-->
-                    <div class="col-sm-2 border weekly_beer">
-                        Beer
-                    </div>
-                    <div class="col-sm-2 border weekly_beer_photo">
-                        Beer Photo
-                    </div>
-                    <div class="col-sm-2 border weekly_beer_description">
-                        Beer Description
-                    </div>
-                </div>
-            </div> 
+
         </div>
     </div>
 
