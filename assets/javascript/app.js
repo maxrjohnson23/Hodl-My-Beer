@@ -44,7 +44,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         sessionStorage.setItem('Login', '<button class="btn navbar-btn text-white btn-secondary btnLogin m-auto d-none" type="submit">Log in</button>');
         sessionStorage.setItem('Signout', '<button class="btn navbar-btn text-white btn-secondary btnSignout m-auto" type="submit">Sign out</button>');
         // Set user id in session for later data updates
-        sessionStorage.setItem('userId');
+        sessionStorage.setItem('userId', uid);
         $('.logincontainer').html(sessionStorage.getItem('Login'));
         $('.signoutcontainer').html(sessionStorage.getItem('Signout'));
     } else {
