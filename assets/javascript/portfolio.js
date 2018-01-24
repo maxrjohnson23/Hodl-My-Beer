@@ -20,7 +20,10 @@ const dataTable = $('#portfolio-table').DataTable({
 $('#portfolio-table').find('tbody').on('click', 'button.btn-danger', function () {
     // Delete from datatable
     dataTable.row($(this).parents('tr')).remove().draw();
-    // TODO delete from firebase
+
+    // Delete currency from user's portfolio in firebase
+    var key = $(this).attr("data-key");
+    database.ref(`/portfolio/${sessionStorage.getItem("userId")}/${key}`).remove();
 });
 
 // Click event handler for graph icon to show the cryptocompare chart
@@ -57,7 +60,7 @@ $("#add-curr-btn").on("click", function() {
 });
 
 // Add row to DataTables
-function addDataRow(currency) {
+function addDataRow(key, currency) {
     dataTable.row.add([
         `<img src="assets/images/graph.png" class="graph-icon" data-currency="${currency.symbol}" />`,
         currency.symbol,
@@ -65,15 +68,13 @@ function addDataRow(currency) {
         currency.percent_change_1h,
         currency.percent_change_24h,
         currency.percent_change_7d,
-        "<button class='btn-sm btn-danger'>Remove</button>"
+        `<button class='btn-sm btn-danger' data-key='${key}'>Remove</button>`
     ]).draw(false);
 }
 
 // Call to add currency data to the particular user
 function addPortfolioFirebase(currency) {
-
     var userId = sessionStorage.getItem("userId");
-    // var userId = "testuser";
     database.ref("/portfolio/" + userId).push(currency);
 }
 
@@ -81,7 +82,8 @@ function addPortfolioFirebase(currency) {
 database.ref("/portfolio/" + sessionStorage.getItem("userId")).on("child_added", function(snapshot) {
     if(snapshot.val()) {
         // Add row to Datatable on the UI
-        addDataRow(snapshot.val());
+        var key = snapshot.key;
+        addDataRow(key, snapshot.val());
     }
 });
 
