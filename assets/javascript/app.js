@@ -139,16 +139,16 @@ function pullDaily() {
         abv = 0.5;
     } else if (change >= 18 && change <= 20) {
         abv = 3.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else if (change > 20 && change <= 24) {
         abv = 4.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else if (change > 24 && change <= 30) {
         abv = 5.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else if (change > 30) {
         abv = 6.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else {
         abv = change; //5.8 is a test, this will eventually be our % change from crypto
 
@@ -205,16 +205,16 @@ function pullWeekly() {
         abv = 0.5;
     } else if (change >= 18 && change <= 20) {
         abv = 3.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     } else if (change > 20 && change <= 24) {
         abv = 4.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     } else if (change > 24 && change <= 30) {
         abv = 5.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     } else if (change > 30) {
         abv = 6.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     }
     else {
         abv = change; //5.8 is a test, this will eventually be our % change from crypto
