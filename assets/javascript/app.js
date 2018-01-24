@@ -144,16 +144,16 @@ function pullDaily() {
         abv = 0.5;
     } else if (change >= 18 && change <= 20) {
         abv = 3.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else if (change > 20 && change <= 24) {
         abv = 4.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else if (change > 24 && change <= 30) {
         abv = 5.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else if (change > 30) {
         abv = 6.5;
-        sixpack(abv);
+        dailySixPack(abv);
     } else {
         abv = change; //5.8 is a test, this will eventually be our % change from crypto
 
@@ -217,16 +217,16 @@ function pullWeekly() {
         abv = 0.5;
     } else if (change >= 18 && change <= 20) {
         abv = 3.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     } else if (change > 20 && change <= 24) {
         abv = 4.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     } else if (change > 24 && change <= 30) {
         abv = 5.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     } else if (change > 30) {
         abv = 6.5;
-        sixpack(abv);
+        weeklySixPack(abv);
     }
     else {
         abv = change; //5.8 is a test, this will eventually be our % change from crypto
@@ -288,12 +288,28 @@ function pullWeekly() {
 // }//close for loop
 // }//close pullBeer()
 
-function odouls() { //function when % is too low
-    console.log("odouls");
+function dailySixPack() {//function when % is too high
+    console.log("sixpack");
+    if (percents.day > 18) {
+        var sixer = $("<h4>").text("Congrats, you've earned a six pack!");
+        $(".daily_div").prepend(sixer);
+
+    } else if (percents.day < -18) {
+        var sixer = $("<h4>").text("Sorry, you've earned a six pack!");
+        $(".daily_div").prepend(sixer);
+    }
 };
 
-function sixpack() {//function when % is too high
+function weeklySixPack() {//function when % is too high
     console.log("sixpack");
+    if (percents.week > 18) {
+        var sixer = $("<h4>").text("Congrats, you've earned a six pack!");
+        $(".weekly_div").prepend(sixer);
+
+    } else if (percents.week < -18) {
+        var sixer = $("<h4>").text("Sorry, you've earned a six pack!");
+        $(".weekly_div").prepend(sixer);
+    }
 };
 
 function emptyDivs() {
