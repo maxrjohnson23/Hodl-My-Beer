@@ -50,12 +50,13 @@ $(document).on('click', '.graph-icon', function () {
 // Add currency to portfolio on Add button
 $("#add-curr-btn").on("click", function () {
     var currId = $(this).attr("data-curr-id");
-    if (!currId) {
+    var selection = $("#add-curr-input").val();
+    if (!currId || selection === "") {
         // invalidate field
         $("#add-curr-input").addClass("is-invalid");
     } else {
 
-
+        $("#add-curr-input").removeClass("is-invalid");
         pullCryptoSingleCurrency(currId, function (data) {
             // add to datatables from API data
             if (data) {
