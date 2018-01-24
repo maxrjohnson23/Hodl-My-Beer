@@ -165,7 +165,6 @@ function pullDaily() {
         url: queryURL,
         method: "GET"
     }).done(function (beerResponse) {
-        console.log(beerResponse);
         for (let i = 0; i < beerResponse.length; i++) {
             var returnABV = beerResponse[i].abv;
             filterResult.push(returnABV); //collecting all returned ABVs
@@ -173,15 +172,8 @@ function pullDaily() {
                 beerArray.push(i);  //add to beerArray
             }
         }
-        console.log(filterResult);
-        console.log(beerArray);
-        for (j = 0; j < beerArray.length; j++) {
-            console.log(beerResponse[j]); // print results for matching beers
-        }
         var testBeer = beerResponse[0];
-        console.log(testBeer);
         var beerImage = testBeer.image_url;
-        console.log(beerImage);
         var nameRow = $("<div class='row dNameRow result'>");
         var imageRow = $("<div class='row dImageRow result'>");
         var desRow = $("<div class='row dDesRow result'>");
@@ -240,7 +232,7 @@ function pullWeekly() {
         url: queryURL,
         method: "GET"
     }).done(function (beerResponse) {
-        console.log(beerResponse);
+
         for (let i = 0; i < beerResponse.length; i++) {
             var returnABV = beerResponse[i].abv;
             filterResult.push(returnABV); //collecting all returned ABVs
@@ -248,15 +240,8 @@ function pullWeekly() {
                 beerArray.push(i);  //add to beerArray
             }
         }
-        console.log(filterResult);
-        console.log(beerArray);
-        for (j = 0; j < beerArray.length; j++) {
-            console.log(beerResponse[j]); // print results for matching beers
-        }
         var testBeer = beerResponse[0];
-        console.log(testBeer);
         var beerImage = testBeer.image_url;
-        console.log(beerImage);
         var nameRow = $("<div class='row wNameRow result'>");
         var imageRow = $("<div class='row wImageRow result'>");
         var desRow = $("<div class='row wDesRow result'>");
@@ -285,35 +270,33 @@ function pullWeekly() {
     });
 }
 
-// }//close for loop
-// }//close pullBeer()
+
 
 function dailySixPack() {//function when % is too high
-    console.log("sixpack");
     if (percents.day > 18) {
-        var sixer = $("<h4>").text("Congrats, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Congrats, you've earned a six pack!");
         $(".daily_div").prepend(sixer);
 
     } else if (percents.day < -18) {
-        var sixer = $("<h4>").text("Sorry, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Sorry, you've earned a six pack!");
         $(".daily_div").prepend(sixer);
     }
 };
 
 function weeklySixPack() {//function when % is too high
-    console.log("sixpack");
     if (percents.week > 18) {
-        var sixer = $("<h4>").text("Congrats, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Congrats, you've earned a six pack!");
         $(".weekly_div").prepend(sixer);
 
     } else if (percents.week < -18) {
-        var sixer = $("<h4>").text("Sorry, you've earned a six pack!");
+        var sixer = $("<h4 class='sixer'>").text("Sorry, you've earned a six pack!");
         $(".weekly_div").prepend(sixer);
     }
 };
 
 function emptyDivs() {
     $(".result").remove();
+    $(".sixer").remove();
 }
 
 $("#search-currency").on("click", function () {
