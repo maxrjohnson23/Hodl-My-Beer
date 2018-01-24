@@ -47,6 +47,9 @@ function configureSearchBar(currencyNames) {
                 $searchBtn.attr("data-curr-id", currId);
                 $searchBtn.attr("data-curr-symbol", currSymbol);
 
+            },
+            onShowListEvent: function() {
+                $("#currency-input").removeClass("is-invalid");
             }
         }, theme: "square", cssClasses: "form-control form-control-sm fix-autocomplete input-group"
 
