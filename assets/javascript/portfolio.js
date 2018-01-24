@@ -47,15 +47,15 @@ $(document).on('click', '.graph-icon', function () {
 });
 
 // Add currency to portfolio on Add button
-$("#add-curr-btn").on("click", function() {
+$("#add-curr-btn").on("click", function () {
     let currId = $(this).attr("data-curr-id");
     console.log("Curr id " + currId);
-    pullCryptoSingleCurrency(currId, function(data) {
-            // add to datatables from API data
-            if(data){
-                addDataRow(data[0]);
-            }
-        });
+    pullCryptoSingleCurrency(currId, function (data) {
+        // add to datatables from API data
+        if (data) {
+            addDataRow(data[0]);
+        }
+    });
 });
 
 // Add row to DataTables

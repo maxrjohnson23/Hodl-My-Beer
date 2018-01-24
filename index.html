@@ -5,29 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hodl my beer</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/easy-autocomplete.css">
 </head>
 
 <body>
     <video autoplay muted loop id="myVideo">
-        <source src="assets/images/Light_Beer.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
+        <source src="assets/images/Light_Beer.mp4" type="video/mp4"> Your browser does not support HTML5 video.
     </video>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md bg-primary navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img id="logo" src="assets/images/logo.png"/>
+                <img id="logo" src="assets/images/logo.png" />
             </a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-              
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <div class="thumbnail m-auto userPhoto">
@@ -57,8 +56,8 @@
                 <div class="col-md-6 offset-md-3">
                     <h1 class="display-4 mb-4 text-primary">Search Currency</h1>
                     <div class="input-group mb-3">
-                        <input id="currency-input" type="text" class="auto-complete form-control" placeholder="Currency Name"
-                               aria-label="Currency Name" aria-describedby="basic-addon2">
+                        <input id="currency-input" type="text" class="auto-complete form-control" placeholder="Currency Name" aria-label="Currency Name"
+                            aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button id="search-currency" class="btn btn-primary" data-currency="" type="button">Search</button>
                         </div>
@@ -67,61 +66,61 @@
             </div>
 
             <div class="row">
-                <div class = "col-md-6 offset-md-3">
+                <div class="col-md-6 offset-md-3">
                     <div class="currentPrice"></div>
                 </div>
             </div>
-        
+
             <div class="row">
-                <div class = "col-sm-5 border daily_div">
+                <div class="col-sm-5 border daily_div">
                     Daily
-                    <div class = "row">
-                        <div class = "col-sm-9">
-                            <div class = "row">
-                                <div class = "col-sm-3 border daily_percentage">Change (24h)</div>
-                                <div class = "col-sm-9 border daily_graph">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-3 border daily_percentage">Change (24h)</div>
+                                <div class="col-sm-9 border daily_graph">
                                     <div class="row">
                                         <div class="col-sm-12 daily_graph_img"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class = "row">
+                            <div class="row">
                                 <div class="col-sm-12 border daily_beer_description"></div>
                             </div>
                         </div>
-                        <div class = "col-sm-3">
-                            <div class = "row">
-                                <div class = "col-sm-12 border daily_beer"></div>
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <div class="col-sm-12 border daily_beer"></div>
                             </div>
-                            <div class = "row">
-                                <div class = "col-sm-12 border daily_beer_photo"></div>
+                            <div class="row">
+                                <div class="col-sm-12 border daily_beer_photo"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class = "col-sm-2"></div>
-                <div class = "col-sm-5 border weekly_div">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 border weekly_div">
                     Weekly
-                    <div class = "row">
-                        <div class = "col-sm-9">
-                            <div class = "row">
-                                <div class = "col-sm-3 border weekly_percentage">Change (1W)</div>
-                                <div class = "col-sm-9 border weekly_graph">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-3 border weekly_percentage">Change (1W)</div>
+                                <div class="col-sm-9 border weekly_graph">
                                     <div class="row">
                                         <div class="col-sm-12 weekly_graph_img"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class = "row">
+                            <div class="row">
                                 <div class="col-sm-12 border weekly_beer_description"></div>
                             </div>
                         </div>
-                        <div class = "col-sm-3">
-                            <div class = "row">
-                                <div class = "col-sm-12 border weekly_beer"></div>
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <div class="col-sm-12 border weekly_beer"></div>
                             </div>
-                            <div class = "row">
-                                <div class = "col-sm-12 border weekly_beer_photo"></div>
+                            <div class="row">
+                                <div class="col-sm-12 border weekly_beer_photo"></div>
                             </div>
                         </div>
                     </div>
@@ -129,21 +128,21 @@
 
             </div>
 
-            <div class="results-area">
+            <!-- <div class="results-area">
                 <div class="row daily mt-5">
                     <div class="col-sm-2 border">
                         Daily
                     </div>
                     <div class="col-sm-2 border daily_percentage">
                         Daily %
-                    </div>
-                    <!--<div class="col-sm-2 border daily_graph">
+                    </div> -->
+            <!--<div class="col-sm-2 border daily_graph">
                         Graph
                         <div class="row">
                             <div class="col-sm-12 daily_graph_img"></div>
                         </div>
                     </div>-->
-                    <div class="col-sm-2 border daily_beer">
+            <!-- <div class="col-sm-2 border daily_beer">
                         Beer
                     </div>
                     <div class="col-sm-2 border daily_beer_photo">
@@ -159,14 +158,14 @@
                     </div>
                     <div class="col-sm-2 border weekly_percentage">
                         Weekly %
-                    </div>
-                    <!--<div class="col-sm-2 border weekly_graph">
+                    </div> -->
+            <!--<div class="col-sm-2 border weekly_graph">
                         Graph
                         <div class="row">
                             <div class="col-sm-12 weekly_graph_img"></div>
                         </div>
                     </div>-->
-                    <div class="col-sm-2 border weekly_beer">
+            <!-- <div class="col-sm-2 border weekly_beer">
                         Beer
                     </div>
                     <div class="col-sm-2 border weekly_beer_photo">
@@ -178,39 +177,36 @@
                 </div>
             </div> 
         </div>
-    </div>
+    </div> -->
 
 
-    <!-- Footer -->
-    <footer class="bg-dark" id="footer">
-        <div class="container">
-            <span class="text-muted">© Copyright 2018</span>
-        </div>
-    </footer>
+            <!-- Footer -->
+            <footer class="bg-dark" id="footer">
+                <div class="container">
+                    <span class="text-muted">© Copyright 2018</span>
+                </div>
+            </footer>
 
-    <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+            <!-- firebase -->
+            <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
 
-    <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    <!-- popper.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <!-- bootstrap.js -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-            crossorigin="anonymous"></script>
+            <!-- jquery -->
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+            <!-- popper.js -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <!-- bootstrap.js -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+                crossorigin="anonymous"></script>
 
-    <!--jQuery easyautocomplete plugin-->
-    <script src="assets/javascript/jquery.easy-autocomplete.min.js"></script>
+            <!--jQuery easyautocomplete plugin-->
+            <script src="assets/javascript/jquery.easy-autocomplete.min.js"></script>
 
-    <!-- custom JS files -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <script type="text/javascript" src="assets/javascript/graph.js"></script>
-    <script type="text/javascript" src="assets/javascript/autocomplete.js"></script>
+            <!-- custom JS files -->
+            <script type="text/javascript" src="assets/javascript/app.js"></script>
+            <script type="text/javascript" src="assets/javascript/graph.js"></script>
+            <script type="text/javascript" src="assets/javascript/autocomplete.js"></script>
 
 </body>
 
