@@ -1,13 +1,11 @@
-database.ref("/cryptoList").on("value", function (snapshot) {
-    let currencyList = snapshot.val();
-
-    if (currencyList) {
-        for (let i = 0; i < 5; i++) {
-            // Create row for data table
-            addDataRow(currencyList[i])
-        }
+(function setUser() {
+    // Create default data when user is not logged in
+    if(!sessionStorage.getItem("userId")) {
+        console.log("Setting default user");
+        sessionStorage.setItem("userId","default");
     }
-});
+})();
+
 
 // Initialize data tables on portfolio
 const dataTable = $('#portfolio-table').DataTable({
@@ -53,7 +51,7 @@ $("#add-curr-btn").on("click", function() {
     pullCryptoSingleCurrency(currId, function(data) {
             // add to datatables from API data
             if(data){
-                addDataRow(data[0]);
+                addPortfolioFirebase(data[0]);
             }
         });
 });
@@ -70,4 +68,38 @@ function addDataRow(currency) {
         "<button class='btn-sm btn-danger'>Remove</button>"
     ]).draw(false);
 }
+
+// Call to add currency data to the particular user
+function addPortfolioFirebase(currency) {
+
+    var userId = sessionStorage.getItem("userId");
+    // var userId = "testuser";
+    database.ref("/portfolio/" + userId).push(currency);
+}
+
+// Get logged in user to watch for changes on their portfolio
+database.ref("/portfolio/" + sessionStorage.getItem("userId")).on("child_added", function(snapshot) {
+    if(snapshot.val()) {
+        // Add row to Datatable on the UI
+        addDataRow(snapshot.val());
+    }
+});
+
+// Load data for the user's portfolio  for the first time
+database.ref("/portfolio/" + sessionStorage.getItem("userId")).once("value").then(function(snapshot) {
+    // If no user portfolio data exists, set the default top 5 currencies
+    if(!snapshot.val()) {
+        database.ref("/cryptoList").once("value").then(function (snapshot) {
+            let currencyList = snapshot.val();
+
+            if (currencyList) {
+                for (let i = 0; i < 5; i++) {
+                    // Add currencies to user's portfolio
+                    addPortfolioFirebase(currencyList[i]);
+                }
+            }
+        });
+    }
+});
+
 
