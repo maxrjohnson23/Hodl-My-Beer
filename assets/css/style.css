@@ -22,8 +22,8 @@ body {
     z-index: -100;
 }
 
-#search-div, .daily_div, .weekly_div {
-    border-radius: 15px;
+#search-div, #portfolio-search, #portfolio-div, .daily_div, .weekly_div {
+    border-radius: 15px !important;
     border: 3px solid #bcbebf !important;
 
 }
