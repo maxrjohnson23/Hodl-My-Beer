@@ -1,8 +1,8 @@
 (function setUser() {
     // Create default data when user is not logged in
-    if(!sessionStorage.getItem("userId")) {
+    if (!sessionStorage.getItem("userId")) {
         console.log("Setting default user");
-        sessionStorage.setItem("userId","default");
+        sessionStorage.setItem("userId", "default");
     }
 })();
 
@@ -48,15 +48,21 @@ $(document).on('click', '.graph-icon', function () {
 });
 
 // Add currency to portfolio on Add button
-$("#add-curr-btn").on("click", function() {
-    let currId = $(this).attr("data-curr-id");
-    console.log("Curr id " + currId);
-    pullCryptoSingleCurrency(currId, function(data) {
+$("#add-curr-btn").on("click", function () {
+    var currId = $(this).attr("data-curr-id");
+    if (!currId) {
+        // invalidate field
+        $("#add-curr-input").addClass("is-invalid");
+    } else {
+
+
+        pullCryptoSingleCurrency(currId, function (data) {
             // add to datatables from API data
-            if(data){
+            if (data) {
                 addPortfolioFirebase(data[0]);
             }
         });
+    }
 });
 
 // Add row to DataTables
@@ -79,8 +85,8 @@ function addPortfolioFirebase(currency) {
 }
 
 // Get logged in user to watch for changes on their portfolio
-database.ref("/portfolio/" + sessionStorage.getItem("userId")).on("child_added", function(snapshot) {
-    if(snapshot.val()) {
+database.ref("/portfolio/" + sessionStorage.getItem("userId")).on("child_added", function (snapshot) {
+    if (snapshot.val()) {
         // Add row to Datatable on the UI
         var key = snapshot.key;
         addDataRow(key, snapshot.val());
@@ -88,9 +94,9 @@ database.ref("/portfolio/" + sessionStorage.getItem("userId")).on("child_added",
 });
 
 // Load data for the user's portfolio  for the first time
-database.ref("/portfolio/" + sessionStorage.getItem("userId")).once("value").then(function(snapshot) {
+database.ref("/portfolio/" + sessionStorage.getItem("userId")).once("value").then(function (snapshot) {
     // If no user portfolio data exists, set the default top 5 currencies
-    if(!snapshot.val()) {
+    if (!snapshot.val()) {
         database.ref("/cryptoList").once("value").then(function (snapshot) {
             let currencyList = snapshot.val();
 
